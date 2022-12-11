@@ -1,5 +1,11 @@
+import java.util.Scanner;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Your mother is a hoe!");
+        Scanner scan = new Scanner(System.in);
+        Tile tile = new Tile();
+
+
+        scan.close();
     }
 }
