@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import pokemon.Pokemon;
+
 public class Player {
     // Player Name
     private String name;
@@ -26,11 +28,6 @@ public class Player {
     public ArrayList<Pokemon> getPokemon() {
         return Pokemon;
     }
-
-    // Get Pokeball Storage
-    public ArrayList<Pokeball> getPokeballs() {
-        return Pokeballs;
-    }
     
     // Get X location
     public int getXPos() {
@@ -45,11 +42,6 @@ public class Player {
     // Add Pokemon to Storage
     public void addPokemon(Pokemon pokemon) {
         Pokemon.add(pokemon);
-    }
-
-    // Add Pokeball to Storage
-    public void addPokeball(Pokeball pokeball) {
-        Pokeballs.add(pokeball);
     }
 
     // Set X location

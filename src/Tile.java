@@ -1,23 +1,20 @@
-package tiles;
+import pokemon.Pokemon;
 
-public class Tile {
-    TileTypes tileType;
+public abstract class Tile {
+    // enum TileTypes {
+    //     HOUSE,
+    //     GRASSLAND,
+    //     FOREST,
+    //     CAVE,
+    //     SWAMP,
+    //     MOUNTAIN,
+    //     MISTLANDS;
+    // }
 
-    enum TileTypes {
-        HOUSE,
-        GRASSLAND,
-        FOREST,
-        CAVE,
-        SWAMP,
-        MOUNTAIN,
-        MISTLANDS;
-    }
-    
-    Tile(TileTypes tileType) {
-        this.tileType = tileType;
-    }
+    public abstract void activate();
+    public Pokemon Spawnables;
 
-    protected Player activate(Player player) {
-        return player;
+    public String representation() {
+        return "T";
     }
 }
