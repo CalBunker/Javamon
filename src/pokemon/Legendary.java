@@ -2,7 +2,7 @@ package pokemon;
 
 import utils.statics;
 
-public class Legendary {
+public class Legendary extends Pokemon {
     static String[] types = {
         "Articuno",
         "Zapdos",
