@@ -6,7 +6,6 @@ public class Pokemon {
     // Pokemon Level
     private int level;
 
-
     // Initialize Pokemon
     public Pokemon(String name, int level) {
         this.name = name;
