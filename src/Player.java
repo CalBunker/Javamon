@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-
 import pokemon.Pokemon;
 
 public class Player {

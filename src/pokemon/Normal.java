@@ -8,7 +8,8 @@ public class Normal extends Pokemon {
         "Rattata",
         "Doduo",
         "Eevee",
-        "Tauros"
+        "Tauros",
+        "Bidoof"
     };
 
     Normal(String name, int environmentLevel) {
