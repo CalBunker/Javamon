@@ -31,6 +31,7 @@ public class World {
         return appendable;
     }
 
+    // Appears on the left and right sides of the map
     public void generateMistlands() {
         for (int y = 0; y < worldTiles.size(); y++) {
             int count = (int) ((Math.sin(y/4)*(5.0d*(sizeX/16)))-3);
@@ -40,6 +41,21 @@ public class World {
                 replaceTile((sizeX-1)-x, y, new Mistlands());
             }
         }
+    }
+
+    // The top of the map will have the mountins
+    public void generateMountain() {
+
+    }
+
+    // The bottom of the map will have the swamp
+    public void generateSwamp() {
+
+    }
+
+    // A random square in the map will be forest
+    public void generateForest() {
+        
     }
 
     public ArrayList<ArrayList<Tile>> generate() {
