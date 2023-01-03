@@ -82,6 +82,32 @@ public class World {
         return stringList;
     }
 
+    public void offsetPlayer(int x, int y, boolean updateTile) throws IndexOutOfBoundsException {
+        if (!checkTileExists(x, y)) {
+            throw new IndexOutOfBoundsException("Player cannot fall off map.");
+        }
+
+        player.movePlayer(x, y);
+        
+        if (updateTile) getTile(x, y).activate();
+    }
+
+    public void offsetPlayer(int x, int y) throws IndexOutOfBoundsException {
+        offsetPlayer(x, y, true);
+    }
+
+    public Tile getTile(int x, int y) throws IndexOutOfBoundsException {
+        return worldTiles.get(y).get(x);
+    }
+
+    public boolean checkTileExists(int x, int y) {
+        try {
+            return (getTile(x, y) != null);
+        } catch (IndexOutOfBoundsException e) {
+            return false;
+        }
+    }
+
     public boolean isGenerated() {
         return generated;
     }

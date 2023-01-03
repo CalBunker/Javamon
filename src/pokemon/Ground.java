@@ -1,7 +1,7 @@
 package pokemon;
 import utils.statics;
 
-public class Ground extends Pokemon {
+public class Ground extends APokemon {
     static String[] types = {
         "Sandshrew",
         "Diglett",

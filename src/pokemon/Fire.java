@@ -1,7 +1,7 @@
 package pokemon;
 import utils.statics;
 
-public class Fire extends Pokemon{
+public class Fire extends APokemon{
     static String[] types = {
         "Charmander",
         "Vulpix",

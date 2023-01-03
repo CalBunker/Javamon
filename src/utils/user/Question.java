@@ -30,6 +30,13 @@ public class Question {
         "nope",
         "nuh-uh"
     };
+
+    public static void printIndexedArray(String[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            String item = arr[i];
+            System.out.println("[" + i + "] " + item);
+        }
+    }
     
     /**
      * Obtain a String from the user.
@@ -43,10 +50,24 @@ public class Question {
         return scan.nextLine();
     }
 
-    public static void printIndexedArray(String[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            String item = arr[i];
-            System.out.println("[" + i + "] " + item);
+    public static String requestString(Scanner scan, String question, String... answers) {
+        String[] possibleAnswers = new String[answers.length];
+        for (int i = 0; i < answers.length; i++) {
+            possibleAnswers[i] = answers[i].toLowerCase().strip();
+        }
+
+        String stringedAnswer = "";
+        for (String a : answers) {
+            stringedAnswer += " - " + a + "\n";
+        }
+
+        while (true) {
+            String answer = requestString(scan, question+"\n"+stringedAnswer);
+
+            if (checkIfInArr(possibleAnswers, answer)) return answer;
+            else {
+                System.out.println("That was not an allowed answer.");
+            }
         }
     }
 

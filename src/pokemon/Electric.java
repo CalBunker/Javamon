@@ -1,7 +1,7 @@
 package pokemon;
 import utils.statics;
 
-public class Electric extends Pokemon {
+public class Electric extends APokemon {
     static String[] types = {
         "Pikachu",
         "Magnemite",

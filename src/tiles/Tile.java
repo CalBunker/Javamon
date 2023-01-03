@@ -1,9 +1,9 @@
 package tiles;
-import pokemon.Pokemon;
+import pokemon.APokemon;
 
 public abstract class Tile {
     public abstract void activate();
-    public Pokemon Spawnables;
+    public APokemon Spawnables;
 
     public char repr() {
         return 'T';

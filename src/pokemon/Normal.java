@@ -2,7 +2,7 @@ package pokemon;
 
 import utils.statics;
 
-public class Normal extends Pokemon {
+public class Normal extends APokemon {
     static String[] types = {
         "Pidgey",
         "Rattata",

@@ -1,7 +1,7 @@
 package pokemon;
 import utils.statics;
 
-public class Psychic extends Pokemon {
+public class Psychic extends APokemon {
     static String[] types = {
         "Abra",
         "Drowzee",
