@@ -8,4 +8,8 @@ public abstract class Tile {
     public char repr() {
         return 'T';
     }
+
+    public String getName() {
+        return "Tile";
+    }
 }

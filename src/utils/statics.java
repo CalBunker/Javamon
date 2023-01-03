@@ -2,7 +2,7 @@ package utils;
 
 import java.util.Random;
 
-public class statics {
+public class Statics {
     public static int genRNum(int min, int max) 
     throws IndexOutOfBoundsException {
         

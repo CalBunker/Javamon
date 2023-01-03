@@ -1,5 +1,5 @@
 package pokemon;
-import utils.statics;
+import utils.Statics;
 
 public class Ground extends APokemon {
     static String[] types = {
@@ -12,7 +12,7 @@ public class Ground extends APokemon {
 
     Ground(String name, int environmentLevel) {
         super(
-            statics.pickRItem(types), 
+            Statics.pickRItem(types), 
             environmentLevel
         );
     }

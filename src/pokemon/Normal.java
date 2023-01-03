@@ -1,6 +1,6 @@
 package pokemon;
 
-import utils.statics;
+import utils.Statics;
 
 public class Normal extends APokemon {
     static String[] types = {
@@ -14,7 +14,7 @@ public class Normal extends APokemon {
 
     Normal(String name, int environmentLevel) {
         super(
-            statics.pickRItem(types), 
+            Statics.pickRItem(types), 
             environmentLevel
         );
     }

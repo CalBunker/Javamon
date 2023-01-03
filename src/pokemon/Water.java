@@ -1,5 +1,5 @@
 package pokemon;
-import utils.statics;
+import utils.Statics;
 
 public class Water extends APokemon {
     static String[] types = {
@@ -12,7 +12,7 @@ public class Water extends APokemon {
 
     Water(String name, int environmentLevel) {
         super(
-            statics.pickRItem(types), 
+            Statics.pickRItem(types), 
             environmentLevel
         );
     }

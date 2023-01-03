@@ -28,28 +28,39 @@ public class GameManager {
         return world;
     }
 
-    // private void 
-
-    public static void mainLoop(Scanner scan, World world) {
+    /**
+     * The main program loop
+     * @param scan The Scanner object
+     * @param world The main world
+     * @return True if the loop should continue
+     */
+    public static boolean mainLoop(Scanner scan, World world) {
         Screen.clear();
+        printStatistics(world);
 
         int action = Question.chooseItem(scan, "What action do you want to take?", 
             "North",
             "East",
             "West",
             "South",
-            "Open Backpack");
+            "Open Backpack",
+            "Exit");
         
         try {
-            determineDirection(action, world);
+            return determineDirection(action, world);
         } catch (IndexOutOfBoundsException e) {
             Screen.typed("You peer over a sudden cliff down towards an infinite void. Your brain cannot comprehend it's sheer vastness.");
             Screen.typed("You suddenly awake, about three feet away from the cliff. You do not know how much time has passed since you peered over it's edge, but you get the feeling you should do it again.");
+            return true;
         }
     }
 
-    private static void determineDirection(int action, World world) {
+    /**
+     * @return True if the loop should continue
+     */
+    private static boolean determineDirection(int action, World world) {
         switch (action) {
+            // THE BOTTOM RIGHT IS 0, 0
             case 0: // North
                 world.offsetPlayer(0, 1);
                 break;
@@ -70,8 +81,17 @@ public class GameManager {
                 world.player.printBag();
                 break;
 
+            case 5: // Exit
+                return false;
             default:
                 break;
         }
+
+        return true;
+    }
+
+    private static void printStatistics(World world) {
+        System.out.println("Player Coords - (" + world.player.getXPos() + ", " + world.player.getYPos() + ")");
+        System.out.println("Current Tile: " + world.getTile(world.player.getXPos(), world.player.getYPos()).getName());
     }
 }

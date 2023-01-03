@@ -1,5 +1,7 @@
 package utils.user;
 
+import java.util.Scanner;
+
 public class Screen {
     public static void clear() {
         System.out.print("\033[H\033[2J");  
@@ -12,7 +14,7 @@ public class Screen {
         try {
             for (char p : printable) {
                 System.out.print(p);
-                Thread.sleep(80);
+                Thread.sleep(10);
             }
         } catch (InterruptedException e) {
             System.out.println();
@@ -20,5 +22,10 @@ public class Screen {
         }
 
         System.out.println();
+    }
+
+    public static void awaitUser(Scanner scan) {
+        System.out.println("<Press Enter to Continue>");
+        scan.nextLine();
     }
 }

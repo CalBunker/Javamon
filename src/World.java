@@ -33,10 +33,7 @@ public class World {
 
     public void generateMistlands() {
         for (int y = 0; y < worldTiles.size(); y++) {
-            // ArrayList<Tile> row = worldTiles.get(i);
-
             int count = (int) ((Math.sin(y/4)*(5.0d*(sizeX/16)))-3);
-            System.out.println(count);
             
             for (int x = 0; x < count; x++) {
                 replaceTile(x, y, new Mistlands());
@@ -83,13 +80,13 @@ public class World {
     }
 
     public void offsetPlayer(int x, int y, boolean updateTile) throws IndexOutOfBoundsException {
-        if (!checkTileExists(x, y)) {
+        if (!checkTileExists(player.getXPos()+ x, player.getYPos() + y)) {
             throw new IndexOutOfBoundsException("Player cannot fall off map.");
         }
 
         player.movePlayer(x, y);
         
-        if (updateTile) getTile(x, y).activate();
+        if (updateTile) getTile(player.getXPos(), player.getYPos()).activate();
     }
 
     public void offsetPlayer(int x, int y) throws IndexOutOfBoundsException {

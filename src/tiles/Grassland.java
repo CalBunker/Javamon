@@ -7,11 +7,16 @@ public class Grassland extends Tile {
 
     @Override
     public void activate() {
-        
+        System.out.println("Grassland activated");
     }
 
     @Override
     public char repr() {
         return 'G';
+    }
+
+    @Override
+    public String getName() {
+        return "Grassland";
     }
 }

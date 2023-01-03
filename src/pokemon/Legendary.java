@@ -1,6 +1,6 @@
 package pokemon;
 
-import utils.statics;
+import utils.Statics;
 
 public class Legendary extends APokemon{
     static String[] types = {
@@ -14,8 +14,8 @@ public class Legendary extends APokemon{
 
     Legendary(String name, int environmentLevel) {
         super(
-            statics.pickRItem(types), 
-            statics.genRNum(90, 100)
+            Statics.pickRItem(types), 
+            Statics.genRNum(90, 100)
             );
     }
 }

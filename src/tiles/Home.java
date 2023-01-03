@@ -10,4 +10,9 @@ public class Home extends Tile {
     public char repr() {
         return 'H';
     }
+
+    @Override
+    public String getName() {
+        return "Home";
+    }
 }

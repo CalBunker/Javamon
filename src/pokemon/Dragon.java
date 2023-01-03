@@ -1,5 +1,5 @@
 package pokemon;
-import utils.statics;
+import utils.Statics;
 
 public class Dragon extends APokemon {
     static String[] types = {
@@ -11,7 +11,7 @@ public class Dragon extends APokemon {
 
     Dragon(String name, int environmentLevel) {
         super(
-            statics.pickRItem(types), 
+            Statics.pickRItem(types), 
             environmentLevel
         );
     }
