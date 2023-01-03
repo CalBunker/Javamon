@@ -1,13 +1,26 @@
 import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.List;
+
+import tiles.*;
 
 public class World {
     ArrayList<ArrayList<Tile>> worldTiles;
+    private boolean generated;
+
+    Player player;
+
     int sizeX;
     int sizeY;
 
-    World(int sizeX, int sizeY) {
+    World(int sizeX, int sizeY, Player player) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
+        this.player = player;
+    }
+
+    private void replaceTile(int xPos, int yPos, Tile tile) {
+        worldTiles.get(yPos).set(xPos, tile);
     }
 
     public ArrayList<Tile> generateRowGrassland(int size) {
@@ -18,15 +31,63 @@ public class World {
         return appendable;
     }
 
+    public void generateMistlands() {
+        for (int y = 0; y < worldTiles.size(); y++) {
+            // ArrayList<Tile> row = worldTiles.get(i);
+
+            int count = (int) ((Math.sin(y/4)*(5.0d*(sizeX/16)))-3);
+            System.out.println(count);
+            
+            for (int x = 0; x < count; x++) {
+                replaceTile(x, y, new Mistlands());
+                replaceTile((sizeX-1)-x, y, new Mistlands());
+            }
+        }
+    }
+
     public ArrayList<ArrayList<Tile>> generate() {
+        if (generated) {
+            // Ignore generation
+            return worldTiles;
+        }
+
+        generated = true;
+        
+        // Generate the Grasslands
         worldTiles = new ArrayList<ArrayList<Tile>>();
         for (int y = 0; y < this.sizeY; y++) {
             worldTiles.add( generateRowGrassland(this.sizeX) );
         }
+
+        // Generate Mistlands
+        generateMistlands();
+
+        // Generate the player's home
+        replaceTile(player.getXPos(), player.getYPos(), new Home());
+
         return worldTiles;
     }
 
-    public ArrayList<ArrayList<String>> visualize() {
+    public List<List<Character>> visualize() {
+        
+        List<List<Character>> stringList = 
+            worldTiles.stream().map((x) -> 
+                x.stream().map((y) -> y.repr()).collect(Collectors.toList())
+            ).collect(Collectors.toList());
+        
+        stringList.forEach((x) -> {
+            System.out.println(String.join(" ", String.valueOf(x)));
+        });
 
+        return stringList;
+    }
+
+    public boolean isGenerated() {
+        return generated;
+    }
+
+    public double getRatio() {
+        if (sizeX > sizeY) return sizeX/sizeY;
+        else return sizeY/sizeX;
     }
 }

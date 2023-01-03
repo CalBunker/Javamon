@@ -1,5 +1,0 @@
-public interface TileInterface {
-
-    public void activate();
-    public String representation();
-}

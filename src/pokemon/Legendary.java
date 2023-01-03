@@ -2,11 +2,7 @@ package pokemon;
 
 import utils.statics;
 
-<<<<<<< Updated upstream
-public class Legendary extends Pokemon {
-=======
 public class Legendary extends Pokemon{
->>>>>>> Stashed changes
     static String[] types = {
         "Articuno",
         "Zapdos",
