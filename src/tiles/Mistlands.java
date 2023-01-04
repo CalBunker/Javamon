@@ -1,68 +1,29 @@
 package tiles;
 import utils.user.*;
 import utils.Statics;
+
+import java.util.Scanner;
+
+import battle.PokeBattle;
 import pokemon.*;
 import primary.*;
 
 public class Mistlands extends Tile {
     public Pokemon genPokemon(){
-        boolean findPoke;
         int pokeR = Statics.genRNum(0,1);
-        if (pokeR == 0) {
-            Pokemon pokemon = new Dragon(Statics.genRNum(76,99));        
-        }else {
-            return null;
-        }
+
+        if (pokeR == 1) return null;
+
+        return new Dragon(Statics.genRNum(76,99));        
     }
 
     @Override
-    public void activate(Player player) {
+    public void activate(Player player, Scanner scan) {
         Pokemon pokemon = genPokemon();
-        if (pokemon != null) {
-            Screen.typed("You found a " + pokemon.getName()+"!");
-            boolean win = encounterBattle(pokemon, player);
-            Screen.typed("1 - Fight!");
-            Screen.typed("2 - Catch!");
-            Screen.typed("3 - Run!");
-            int action = scan.nextLine();
-            while (action != 1 || action != 2 || action != 3) {
-                Screen.typed("Please enter a valid action.");
-                action = scan.nextLine();
-            }
-            if (action == 1) {
-                if (win) {
-                    Screen.typed("You won the battle!");
-                    player.addPokemon(pokemon);
-                    Screen.typed("Would you like to catch the wild Pokemon? (y/n)");
-                    String action2 = scan.nextLine();
-                    while (action2 != "y" || action2 != "n") {
-                        Screen.typed("Please enter a valid action.");
-                        action2 = scan.nextLine();
-                    }
-                    if (action2 == "y") {
-                        Screen.typed("You caught the pokemon!");
-                        player.addPokemon(pokemon);
-                    } else {
-                        Screen.typed("You left the poor thing to die. :(");
-                    }
-                } else {
-                    Screen.typed("You lost the battle, and your Pokemon died!");
-                    player.removePokemon(pokemon);
-                }
-            } else if (action == 2) {
-                boolean win2 = calculateCatch(pokemon);
-                if (win2) {
-                    Screen.typed("You caught the pokemon!");
-                    player.addPokemon(pokemon);
-                } else {
-                    Screen.typed("You failed to catch the pokemon :(");
-                }
-            } else if (action == 3) {
-                Screen.typed("You ran away!");
-            }
-        } else {
-            Screen.typed("You found nothing. :(");
-        }
+        
+        if (pokemon == null) { Screen.typed("You found nothing. :("); return; }
+
+        PokeBattle.handlePokemon(pokemon, player, scan);
     }
 
     @Override

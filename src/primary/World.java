@@ -2,6 +2,8 @@ package primary;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.List;
+import java.util.Scanner;
+
 import tiles.*;
 
 public class World {
@@ -95,18 +97,18 @@ public class World {
         return stringList;
     }
 
-    public void offsetPlayer(int x, int y, boolean updateTile) throws IndexOutOfBoundsException {
+    public void offsetPlayer(int x, int y, boolean updateTile, Scanner scan) throws IndexOutOfBoundsException {
         if (!checkTileExists(player.getXPos()+ x, player.getYPos() + y)) {
             throw new IndexOutOfBoundsException("Player cannot fall off map.");
         }
 
         player.movePlayer(x, y);
         
-        if (updateTile) getTile(player.getXPos(), player.getYPos()).activate(player);
+        if (updateTile) getTile(player.getXPos(), player.getYPos()).activate(player, scan);
     }
 
-    public void offsetPlayer(int x, int y) throws IndexOutOfBoundsException {
-        offsetPlayer(x, y, true);
+    public void offsetPlayer(int x, int y, Scanner scan) throws IndexOutOfBoundsException {
+        offsetPlayer(x, y, true, scan);
     }
 
     public Tile getTile(int x, int y) throws IndexOutOfBoundsException {
