@@ -9,14 +9,8 @@ public class Mistlands extends Tile {
         boolean findPoke;
         int pokeR = Statics.genRNum(0,1);
         if (pokeR == 0) {
-            findPoke = false;
-        } else {
-            findPoke = true;
-        }
-        if (findPoke) {
-            int pokeType = Statics.genRNum(0, 2);
-            Pokemon pokemon = new Dragon(Statics.genRNum(76,99));
-        } else {
+            Pokemon pokemon = new Dragon(Statics.genRNum(76,99));        
+        }else {
             return null;
         }
     }

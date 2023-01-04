@@ -9,11 +9,6 @@ public class Mountain extends Tile {
         boolean findPoke;
         int pokeR = Statics.genRNum(0,1);
         if (pokeR == 0) {
-            findPoke = false;
-        } else {
-            findPoke = true;
-        }
-        if (findPoke) {
             int pokeType = Statics.genRNum(0, 2);
             Pokemon pokemon =
             switch (pokeType) {
@@ -21,8 +16,8 @@ public class Mountain extends Tile {
                   case 1 -> new Rock(Statics.genRNum(41,65));
                   case 2 -> new Ground(Statics.genRNum(41,65));
                   default -> new Electric(Statics.genRNum(41,65));
-           };
-        } else {
+            } ;
+        }else {
             return null;
         }
     }

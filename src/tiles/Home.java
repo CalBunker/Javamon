@@ -6,7 +6,7 @@ public class Home extends Tile {
     @Override
     public void activate(Player player) {
         Screen.typed("You walk up to your house.");
-        Screen.typed("\"Hello, " + player.getName() + "!\"");
+        Screen.typed("\"Hello, " + player.getName() + "!\", your mother says.");
         Screen.typed("That's all. You can't do anything else here.");
     }
 
