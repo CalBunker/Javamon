@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Statics {
     public static int genRNum(int min, int max) 
-    throws IndexOutOfBoundsException {
+        throws IndexOutOfBoundsException {
         
         if (max < min) {
             throw new IndexOutOfBoundsException("Minimum cannot be larger than maximum");
@@ -40,5 +40,14 @@ public class Statics {
             }
         }
         return false;
+    }
+
+    public static float invertNum(float num, float min, float max) {
+        float diff = max - min;
+        float normNum = num-min;
+
+        double percentage = ((double)normNum)/((double) diff);
+        return (float) ((1-percentage)*(double) diff) + min;
+
     }
 }

@@ -32,6 +32,12 @@ public class GameManager {
         // ===
         World world = new World(size, size, new Player(playerName, size/2, size/2));
         world.generate();
+
+        // Screen.clear();
+        // world.visualize();
+        // System.out.println();
+        // world.worldBreakdown();
+        // Screen.awaitUser(scan);
         return world;
     }
 
@@ -98,8 +104,42 @@ public class GameManager {
     }
 
     private static void printStatistics(World world) {
+        Player player = world.player;
+
         System.out.println("Player Coords - (" + world.player.getXPos() + ", " + world.player.getYPos() + ")");
         System.out.println("Current Tile: " + world.getTile(world.player.getXPos(), world.player.getYPos()).getName());
+
+        renderMiniMap(world, player);
+    }
+
+    private static void renderMiniMap(World world, Player player) {
+        String[][] miniMap = new String[3][3];
+
+        int maxLeft = player.getXPos()-1;
+        int maxRight = player.getXPos()+1;
+        
+        int maxTop = player.getYPos()+1;
+        int maxBottom = player.getYPos()-1;
+
+        int yCount = 0;
+        for (int y = maxTop; y >= maxBottom; y--) {
+            int xCount = 0;
+            for (int x = maxLeft; x <= maxRight; x++) {
+                miniMap[yCount][xCount] = String.valueOf(world.getTile(x, y).repr());
+
+                xCount++;
+            }
+
+            yCount++;
+        }
+
+        System.out.println();
+        for (String[] row : miniMap) {
+            for (String item : row) {
+                System.out.print(item + " ");
+            }
+            System.out.println();
+        }
     }
 
     private static String startIntroduction(Scanner scan) throws InterruptedException {

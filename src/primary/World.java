@@ -3,8 +3,10 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Random;
 
 import tiles.*;
+import utils.Statics;
 import pokemon.*;
 
 public class World {
@@ -55,28 +57,60 @@ public class World {
     // Appears on the left and right sides of the map
     public void generateMistlands() {
         for (int y = 0; y < worldTiles.size(); y++) {
-            int count = (int) ((Math.sin(y/4)*(5.0d*(sizeX/16)))-3);
+            int sizingRatio = (sizeX/ ((10*((sizeX-16)/ 48)) + 16) );
+
+            int count = (int) ((Math.sin(y/4)*(5.0d*(sizingRatio)))-3);
             
             for (int x = 0; x < count; x++) {
-                replaceTile(x, y, new Mistlands());
-                replaceTile((sizeX-1)-x, y, new Mistlands());
+                replaceTile(x, y, new Mistland());
+                replaceTile((sizeX-1)-x, y, new Mistland());
             }
         }
     }
 
     // The top of the map will have the mountins
     public void generateMountain() {
+        Random rand = new Random();
 
+        for (int y = 0; y < worldTiles.size(); y++) {
+            ArrayList<Tile> row = worldTiles.get(y);
+            float chance = 100.f*(((float) sizeX)/10)/ ((float) y*3);
+            
+            for (int x = 0; x < row.size(); x++) {
+                if (rand.nextFloat()*100f <= chance) 
+                    replaceTile(x, y, new Mountain());
+            }
+        }
     }
 
     // The bottom of the map will have the swamp
     public void generateSwamp() {
+        Random rand = new Random();
 
+        for (int y = 0; y < worldTiles.size(); y++) {
+            ArrayList<Tile> row = worldTiles.get(y);
+            float chance = 100.f*(((float) sizeX)/16) / ((float) (Statics.invertNum(y, 0, worldTiles.size()-1))*4);
+            
+            for (int x = 0; x < row.size(); x++) {
+                if (rand.nextFloat()*100f <= chance) 
+                    replaceTile(x, y, new Swamp());
+            }
+        }
     }
 
-    // A random square in the map will be forest
+    // Grassland will randomly be replaced with Forest
     public void generateForest() {
-        
+        for (int y = 0; y < worldTiles.size(); y++) {
+            for (int x = 0; x < worldTiles.get(y).size(); x++) {
+                if (getTile(x, y).getClass() == Grassland.class) {
+                    Random rand = new Random();
+    
+                    if (rand.nextInt(3) == 0) {
+                        replaceTile(x, y, new Forest());
+                    }
+                }
+            }
+        }
     }
 
     public ArrayList<ArrayList<Tile>> generate() {
@@ -88,32 +122,57 @@ public class World {
         generated = true;
         
         // Generate the Grasslands
+        // - 256 -
+        // 78
+        // 30.468%
+
+        // - 4096 -
+        // 1,248
         worldTiles = new ArrayList<ArrayList<Tile>>();
         for (int y = 0; y < this.sizeY; y++) {
             worldTiles.add( generateRowGrassland(this.sizeX) );
         }
 
+        // Generate Mountains
+        // - 256 -
+        // 34
+        // 13.281%
+
+        // - 4096 -
+        // 544
+        generateMountain();
+
+        // Generate Swamp
+        // - 256 -
+        // 24
+        // 9.375%
+
+        // - 4096 - 
+        // 384
+        generateSwamp();
+
+        // Generate Forest
+        // - 256 -
+        // 60
+        // 23.4375%
+
+        // - 4096 -
+        // 960
+        generateForest();
+
         // Generate Mistlands
+        // - 256 -
+        // 16
+        // 6.25%
+
+        // - 4096 -
+        // 256
         generateMistlands();
 
         // Generate the player's home
         replaceTile(player.getXPos(), player.getYPos(), new Home());
 
         return worldTiles;
-    }
-
-    public List<List<Character>> visualize() {
-        
-        List<List<Character>> stringList = 
-            worldTiles.stream().map((x) -> 
-                x.stream().map((y) -> y.repr()).collect(Collectors.toList())
-            ).collect(Collectors.toList());
-        
-        stringList.forEach((x) -> {
-            System.out.println(String.join(" ", String.valueOf(x)));
-        });
-
-        return stringList;
     }
 
     public void offsetPlayer(int x, int y, boolean updateTile, Scanner scan) throws IndexOutOfBoundsException {
@@ -149,5 +208,68 @@ public class World {
     public double getRatio() {
         if (sizeX > sizeY) return sizeX/sizeY;
         else return sizeY/sizeX;
+    }
+
+    public List<List<Character>> visualize() {
+        
+        List<List<Character>> stringList = 
+            worldTiles.stream().map((x) -> 
+                x.stream().map((y) -> y.repr()).collect(Collectors.toList())
+            ).collect(Collectors.toList());
+        
+        stringList.forEach((x) -> {
+            System.out.println(String.join(" ", String.valueOf(x)));
+        });
+
+        return stringList;
+    }
+
+    public void worldBreakdown() {
+        int grassland = 0;
+        int forest = 0;
+        int mistland = 0;
+        int mountain = 0;
+        int swamp = 0;
+        int other = 0;
+
+        for (ArrayList<Tile> worldTiles1 : worldTiles) {
+            for (Tile worldTiles2 : worldTiles1) {
+                char name = worldTiles2.repr();
+
+                switch (name) {
+                    case 'G':
+                        grassland+=1;
+                        break;
+                    
+                    case 'F':
+                        forest+=1;
+                        break;
+                    
+                    case 'L':
+                        mistland+=1;
+                        break;
+
+                    case 'M':
+                        mountain+=1;
+                        break;
+                    
+                    case 'S':
+                        swamp+=1;
+                        break;
+
+                    default:
+                        other+=1;
+                        break;
+                }
+            }
+        }
+
+        System.out.println("Grassland: " + grassland);
+        System.out.println("Forest: " + forest);
+        System.out.println("Mistland: " + mistland);
+        System.out.println("Mountain: " + mountain);
+        System.out.println("Swamp: " + swamp);
+
+        System.out.println("Other: " + other);
     }
 }
