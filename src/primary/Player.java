@@ -1,6 +1,7 @@
+package primary;
+
 import java.util.Scanner;
 
-package primary;
 import java.util.ArrayList;
 import pokemon.Pokemon;
 import utils.user.*;
@@ -90,7 +91,7 @@ public class Player {
 
                 Screen.typed("You leveled up! Your new player level is: "+getLevel());
                 scan.nextLine();
-                
+
             } else{
             }
         }
