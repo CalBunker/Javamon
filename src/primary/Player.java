@@ -43,16 +43,19 @@ public class Player {
     // Calculate Player Level
     public int getLevel() {
         if (xp==0) return 0;
-        else if (xp==1) return 1;
-        else if (xp==5) return 2;
-        else if (xp==10) return 3;
-        else if (xp==15) return 4;
-        else if (xp==30) return 5;
-        else if (xp==45) return 6;
-        else if (xp==90) return 7;
-        else if (xp==135) return 8;
-        else if (xp==270) return 9;
+        else if (xp>=1 && xp<5) return 1;
+        else if (xp>=5 && xp<10) return 2;
+        else if (xp>=10 && xp < 15) return 3;
+        else if (xp>=15 && xp <30) return 4;
+        else if (xp>=30 && xp < 45) return 5;
+        else if (xp>=45 && xp < 69) return 6;
+        else if (xp==69) return 69;
+        else if (xp>=70 && xp < 90) return 6;
+        else if (xp>=90 && xp < 135) return 7;
+        else if (xp>=135 && xp < 270) return 8;
+        else if (xp>=270 && xp < 300) return 9;
         else if (xp>300) return 10;
+        else return 0;
     }
     
     // Get X location
