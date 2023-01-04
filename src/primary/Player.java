@@ -76,6 +76,12 @@ public class Player {
     // Add Pokemon to Storage
     public void addPokemon(Pokemon pokemon) {
         Pokemon.add(pokemon);
+        if (activePokemon == null) {
+            activePokemon = pokemon;
+        }
+        else if (pokemon.getLevel() > activePokemon.getLevel()) {
+            activePokemon = pokemon;
+        }
     }
 
     // Remove Pokemon from Storage
@@ -111,8 +117,8 @@ public class Player {
     }
 
     // Set Player's active Pokemon
-    public void setActivePokemon(Pokemon activePokemon) {
-        this.activePokemon = activePokemon;
+    public void setActivePokemon(Pokemon newActive) {
+        activePokemon = newActive;
     }
 
     // Print out the Pokemon in the player's bag
