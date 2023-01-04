@@ -4,7 +4,7 @@ import utils.user.Screen;
 import java.util.Scanner;
 
 public class GameManager {
-    public static final boolean PLAY_INTRO = false;
+    public static final boolean PLAY_INTRO = true;
 
     public static World setup(Scanner scan) {
         String playerName;
@@ -146,6 +146,7 @@ public class GameManager {
         // ===
         // MAIN MENU
         // ===
+        Screen.clear();
         System.out.println("                         LogiBunk Studios Presents:");
         System.out.println("    ___  ________  ___      ___ ________  _____ ______   ________  ________      ");
         Thread.sleep(400);
@@ -163,15 +164,18 @@ public class GameManager {
         Thread.sleep(400);
         System.out.println("                         Press Enter to Continue...");
         scan.nextLine();
+        Screen.clear();
+
         Screen.typed("First, there was nothing.");
         Screen.typed("Then, there was something.");
         Screen.typed("That something was you, a Pokemon Master, destined for greatness.");
         Screen.typed("Even though you are eternally 11 years old, and have no dad, you are destined for greatness.");
-        Screen.typed("Your mom is supportive, but she just stands awkwardly in the kitchen for the entire game and that's literally her entire purpose.");
+        Screen.typed("Your mom is supportive, but she just stands awkwardly in the kitchen for the whole game and that's literally her entire purpose.");
         Screen.typed("One day though, you received a mysterious letter from The Professor.");
         Screen.typed("It read:");
         System.out.println("");
         Screen.typed("Dear Pokemon Master,");
+        System.out.println("");
         Screen.typed("I am Professor Tree, and I study Pokemon.");
         Screen.typed("The Plot requires that you have a goal, so I have entrusted you with this Pokedex.");
         Screen.typed("Catch 'Em All™, and you will be the greatest Pokemon Master of all time.");

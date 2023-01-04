@@ -10,8 +10,8 @@ import primary.*;
 
 public class Grassland extends Tile {
     public Pokemon genPokemon(){
-
         int pokeR = Statics.genRNum(0,1);
+
         if (pokeR == 1) return null;
 
         int pokeType = Statics.genRNum(0, 3);
