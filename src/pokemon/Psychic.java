@@ -2,7 +2,7 @@ package pokemon;
 import utils.Statics;
 
 public class Psychic extends Pokemon {
-    static String[] types = {
+    public static String[] types = {
         "Abra",
         "Drowzee",
         "Mr. Mime",

@@ -2,7 +2,7 @@ package pokemon;
 import utils.Statics;
 
 public class Electric extends Pokemon {
-    static String[] types = {
+    public static String[] types = {
         "Pikachu",
         "Magnemite",
         "Voltorb",

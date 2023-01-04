@@ -2,7 +2,7 @@ package pokemon;
 import utils.Statics;
 
 public class Poison extends Pokemon {
-    static String[] types = {
+    public static String[] types = {
         "Ekans",
         "Nidoran",
         "Zubat",

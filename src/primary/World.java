@@ -5,10 +5,29 @@ import java.util.List;
 import java.util.Scanner;
 
 import tiles.*;
+import pokemon.*;
 
 public class World {
     ArrayList<ArrayList<Tile>> worldTiles;
     private boolean generated;
+
+    public static int pokeCount() {
+        int sum = 0;
+        sum =+ Grass.types.length;
+        sum =+ Rock.types.length;
+        sum =+ Water.types.length;
+        sum =+ Fire.types.length;
+        sum =+ Electric.types.length;
+        sum =+ Psychic.types.length;
+        sum =+ Dragon.types.length;
+        sum =+ Ghost.types.length;
+        sum =+ Dark.types.length;
+        sum =+ Poison.types.length;
+        sum =+ Fighting.types.length;
+        sum =+ Normal.types.length;
+        sum =+ Psychic.types.length;
+        return sum;
+    }
 
     Player player;
 

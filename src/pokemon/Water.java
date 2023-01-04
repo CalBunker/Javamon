@@ -2,7 +2,7 @@ package pokemon;
 import utils.Statics;
 
 public class Water extends Pokemon {
-    static String[] types = {
+    public static String[] types = {
         "Squirtle",
         "Psyduck",
         "Slowpoke",

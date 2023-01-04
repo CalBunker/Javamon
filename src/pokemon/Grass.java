@@ -2,7 +2,7 @@ package pokemon;
 import utils.Statics;
 
 public class Grass extends Pokemon {
-    static String[] types = {
+    public static String[] types = {
         "Bulbasaur",
         "Oddish",
         "Bellsprout",

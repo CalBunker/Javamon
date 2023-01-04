@@ -2,7 +2,7 @@ package pokemon;
 import utils.Statics;
 
 public class Dark extends Pokemon {
-    static String[] types = {
+    public static String[] types = {
         "Murkrow",
         "Sneasel",
         "Poochyena",
