@@ -2,7 +2,7 @@ package pokemon;
 import utils.Statics;
 
 public class Ghost extends Pokemon {
-    static String[] types = {
+    public static String[] types = {
         "Gastly",
         "Misdreavus",
         "Duskull",

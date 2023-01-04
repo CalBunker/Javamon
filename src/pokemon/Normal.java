@@ -3,7 +3,7 @@ package pokemon;
 import utils.Statics;
 
 public class Normal extends Pokemon {
-    static String[] types = {
+    public static String[] types = {
         "Pidgey",
         "Rattata",
         "Doduo",

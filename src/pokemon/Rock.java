@@ -2,7 +2,7 @@ package pokemon;
 import utils.Statics;
 
 public class Rock extends Pokemon {
-    static String[] types = {
+    public static String[] types = {
         "Geodude",
         "Onix",
         "Rhyhorn",

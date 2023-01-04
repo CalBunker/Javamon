@@ -2,7 +2,7 @@ package pokemon;
 import utils.Statics;
 
 public class Dragon extends Pokemon {
-    static String[] types = {
+    public static String[] types = {
         "Dragonite",
         "Salamence",
         "Garchomp",

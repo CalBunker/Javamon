@@ -2,7 +2,7 @@ package pokemon;
 import utils.Statics;
 
 public class Ground extends Pokemon {
-    static String[] types = {
+    public static String[] types = {
         "Sandshrew",
         "Diglett",
         "Cubone",
