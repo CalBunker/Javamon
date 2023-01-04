@@ -2,7 +2,7 @@ package pokemon;
 
 import utils.Statics;
 
-public class Normal extends APokemon {
+public class Normal extends Pokemon {
     static String[] types = {
         "Pidgey",
         "Rattata",
@@ -12,7 +12,7 @@ public class Normal extends APokemon {
         "Bidoof"
     };
 
-    Normal(String name, int environmentLevel) {
+    public Normal(int environmentLevel) {
         super(
             Statics.pickRItem(types), 
             environmentLevel

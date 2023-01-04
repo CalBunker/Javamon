@@ -1,22 +1,28 @@
+package primary;
 import java.util.ArrayList;
-import pokemon.APokemon;
+import pokemon.Pokemon;
 import utils.user.*;
 
 public class Player {
     // Player Name
     private String name;
     // Pokemon Storage
-    private ArrayList<APokemon> Pokemon = new ArrayList<APokemon>();
+    private ArrayList<Pokemon> Pokemon = new ArrayList<Pokemon>();
     // X location
     private int xPos;
     // Y location
     private int yPos;
+    // Player's active Pokemon
+    private Pokemon activePokemon = null;
     
     // Initialize Player
     public Player(String name, int x, int y) {
         this.name = name;
         xPos = x;
         yPos = y;
+        Pokemon starter = new Pokemon("Shuckle", 15);
+        Pokemon.add(starter);
+        activePokemon = starter;
     }
 
     // Get Player Name
@@ -25,7 +31,7 @@ public class Player {
     }
 
     // Get Pokemon Storage
-    public ArrayList<APokemon> getPokemon() {
+    public ArrayList<Pokemon> getPokemon() {
         return Pokemon;
     }
     
@@ -39,9 +45,19 @@ public class Player {
         return yPos;
     }
 
+    // Get Player's active Pokemon
+    public Pokemon getActivePokemon() {
+        return activePokemon;
+    }
+
     // Add Pokemon to Storage
-    public void addPokemon(APokemon pokemon) {
+    public void addPokemon(Pokemon pokemon) {
         Pokemon.add(pokemon);
+    }
+
+    // Remove Pokemon from Storage
+    public void removePokemon(Pokemon pokemon) {
+        Pokemon.remove(pokemon);
     }
 
     // Set X location
@@ -52,6 +68,11 @@ public class Player {
     // Set Y location
     public void setYPos(int yPos) {
         this.yPos = yPos;
+    }
+
+    // Set Player's active Pokemon
+    public void setActivePokemon(Pokemon activePokemon) {
+        this.activePokemon = activePokemon;
     }
 
     // Print out the Pokemon in the player's bag

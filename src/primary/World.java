@@ -1,7 +1,7 @@
+package primary;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.List;
-
 import tiles.*;
 
 public class World {
@@ -102,7 +102,7 @@ public class World {
 
         player.movePlayer(x, y);
         
-        if (updateTile) getTile(player.getXPos(), player.getYPos()).activate();
+        if (updateTile) getTile(player.getXPos(), player.getYPos()).activate(player);
     }
 
     public void offsetPlayer(int x, int y) throws IndexOutOfBoundsException {

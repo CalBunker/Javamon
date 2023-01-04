@@ -1,9 +1,13 @@
 package tiles;
+import utils.user.*;
+import primary.*;
 
 public class Home extends Tile {
     @Override
-    public void activate() {
-        System.out.println("You walk up to your house.");
+    public void activate(Player player) {
+        Screen.typed("You walk up to your house.");
+        Screen.typed("\"Hello, " + player.getName() + "!\"");
+        Screen.typed("That's all. You can't do anything else here.");
     }
 
     @Override

@@ -1,13 +1,13 @@
 package pokemon;
 
-public class APokemon {
+public class Pokemon {
     // Pokemon Name
     private String name;
     // Pokemon Level
     private int level;
 
     // Initialize Pokemon
-    public APokemon(String name, int level) {
+    public Pokemon(String name, int level) {
         this.name = name;
         this.level = level;
     }

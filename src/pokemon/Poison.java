@@ -1,7 +1,7 @@
 package pokemon;
 import utils.Statics;
 
-public class Poison extends APokemon {
+public class Poison extends Pokemon {
     static String[] types = {
         "Ekans",
         "Nidoran",
@@ -10,7 +10,7 @@ public class Poison extends APokemon {
         "Grimer"
     };
 
-    Poison(String name, int environmentLevel) {
+    public Poison(int environmentLevel) {
         super(
             Statics.pickRItem(types), 
             environmentLevel

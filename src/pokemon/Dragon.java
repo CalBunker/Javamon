@@ -1,7 +1,7 @@
 package pokemon;
 import utils.Statics;
 
-public class Dragon extends APokemon {
+public class Dragon extends Pokemon {
     static String[] types = {
         "Dragonite",
         "Salamence",
@@ -9,7 +9,7 @@ public class Dragon extends APokemon {
         "Hydreigon"
     };
 
-    Dragon(String name, int environmentLevel) {
+    public Dragon(int environmentLevel) {
         super(
             Statics.pickRItem(types), 
             environmentLevel

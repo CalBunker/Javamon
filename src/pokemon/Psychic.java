@@ -1,7 +1,7 @@
 package pokemon;
 import utils.Statics;
 
-public class Psychic extends APokemon {
+public class Psychic extends Pokemon {
     static String[] types = {
         "Abra",
         "Drowzee",
@@ -10,7 +10,7 @@ public class Psychic extends APokemon {
         "Espeon"
     };
 
-    Psychic(String name, int environmentLevel) {
+    public Psychic(int environmentLevel) {
         super(
             Statics.pickRItem(types), 
             environmentLevel
