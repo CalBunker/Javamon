@@ -44,7 +44,7 @@ public class PokeBattle {
 
         Screen.typed("You found a " + pokemon.getName()+"!");
 
-        int action = Question.chooseItem(scan, "Choose an action!", "Fight!", "Catch!", "Run!");
+        int action = Question.chooseItem(scan, "Choose an action:", "Fight!", "Catch!", "Run!");
 
         switch (action) {
             case 0:
@@ -65,6 +65,7 @@ public class PokeBattle {
         if (win) {
             Screen.typed("You caught the pokemon!");
             player.addPokemon(pokemon);
+            player.addXP(1, false, scan);
         } else {
             Screen.typed("You failed to catch the pokemon :(");
         }
@@ -82,6 +83,7 @@ public class PokeBattle {
             if (action2) {
                 Screen.typed("You caught the pokemon!");
                 player.addPokemon(pokemon);
+                player.addXP(1, false, scan);
             } else {
                 Screen.typed("You left the poor thing to die. :(");
             }
