@@ -62,8 +62,8 @@ public class World {
             int count = (int) ((Math.sin(y/4)*(5.0d*(sizingRatio)))-3);
             
             for (int x = 0; x < count; x++) {
-                replaceTile(x, y, new Mistland());
-                replaceTile((sizeX-1)-x, y, new Mistland());
+                replaceTile(x, y, new Mistlands());
+                replaceTile((sizeX-1)-x, y, new Mistlands());
             }
         }
     }
