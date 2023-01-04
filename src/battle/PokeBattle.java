@@ -21,12 +21,12 @@ public class PokeBattle {
     }
 
     // does the necessary logic to determine if a pokemon is caught
-    private static boolean calculateCatch(Pokemon pokemon) {
+    private static boolean calculateCatch(Pokemon pokemon, Player player) {
         int level = pokemon.getLevel();
-        int catchRate = level/4;
+        int catchRate = (level-(player.getLevel()*4))/2;
         
         int catchChance;
-        if (catchRate != 0) {
+        if (catchRate > 0) {
             catchChance = Statics.genRNum(1, catchRate);
         } else {
             catchChance = 1;
@@ -60,7 +60,7 @@ public class PokeBattle {
     }
 
     private static void catchPoke(Pokemon pokemon, Player player) {
-        boolean win = calculateCatch(pokemon);
+        boolean win = calculateCatch(pokemon, player);
 
         if (win) {
             Screen.typed("You caught the pokemon!");

@@ -46,13 +46,13 @@ public class Player {
         else if (xp==1) return 1;
         else if (xp==5) return 2;
         else if (xp==10) return 3;
-        else if (xp==20) return 4;
-        else if (xp==40) return 5;
-        else if (xp==80) return 6;
-        else if (xp==160) return 7;
-        else if (xp==320) return 8;
-        else if (xp==640) return 9;
-        else if (xp==1280) return 10;
+        else if (xp==15) return 4;
+        else if (xp==30) return 5;
+        else if (xp==45) return 6;
+        else if (xp==90) return 7;
+        else if (xp==135) return 8;
+        else if (xp==270) return 9;
+        else if (xp>300) return 10;
     }
     
     // Get X location
