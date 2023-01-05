@@ -31,9 +31,19 @@ public class Question {
         "nuh-uh"
     };
 
+    /**
+     * Prints out an array item by item.
+     * <hr/>
+     * <strong>Note:
+     * If a "-" is inputted, it will be ignored.
+     * </strong>
+     * <hr/>
+     * @param arr The array to make elements of
+     */
     public static void printIndexedArray(String[] arr) {
         for (int i = 0; i < arr.length; i++) {
             String item = arr[i];
+            if (item.equals("-")) { System.out.println(); continue; }
             System.out.println("[" + i + "] " + item);
         }
     }

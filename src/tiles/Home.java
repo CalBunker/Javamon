@@ -7,6 +7,8 @@ import pokemon.Pokemon;
 import primary.*;
 
 public class Home extends Tile {
+    private static final long serialVersionUID = 32L;
+
     @Override
     public Pokemon genPokemon() {
         return null;

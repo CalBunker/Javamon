@@ -9,8 +9,10 @@ import pokemon.*;
 import primary.*;
 
 public class Swamp extends Tile {
+    private static final long serialVersionUID = 32L;
+
     public Pokemon genPokemon(){
-        int pokeR = Statics.genRNum(0,1);
+        int pokeR = Statics.genRNum(0,2);
 
         if (pokeR == 1) return null;
 

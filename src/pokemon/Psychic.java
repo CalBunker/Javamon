@@ -2,6 +2,8 @@ package pokemon;
 import utils.Statics;
 
 public class Psychic extends Pokemon {
+    private static final long serialVersionUID = 32L;
+
     public static String[] types = {
         "Abra",
         "Drowzee",

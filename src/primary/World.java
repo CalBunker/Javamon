@@ -1,5 +1,7 @@
 package primary;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.stream.Collectors;
 import java.util.List;
 import java.util.Scanner;
@@ -9,7 +11,9 @@ import tiles.*;
 import utils.Statics;
 import pokemon.*;
 
-public class World {
+public class World implements Serializable {
+    private static final long serialVersionUID = 32L;
+
     ArrayList<ArrayList<Tile>> worldTiles;
     private boolean generated;
 
@@ -182,7 +186,7 @@ public class World {
 
         player.movePlayer(x, y);
         
-        if (updateTile) getTile(player.getXPos(), player.getYPos()).activate(player, scan);
+        if (updateTile) getTile(player.getXPos(), player.getYPos()).activation(player, scan);
     }
 
     public void offsetPlayer(int x, int y, Scanner scan) throws IndexOutOfBoundsException {
@@ -210,16 +214,24 @@ public class World {
         else return sizeY/sizeX;
     }
 
-    public List<List<Character>> visualize() {
+    public List<List<String>> visualize() {
         
-        List<List<Character>> stringList = 
+        List<List<String>> stringList = 
             worldTiles.stream().map((x) -> 
-                x.stream().map((y) -> y.repr()).collect(Collectors.toList())
+                x.stream().map((y) -> {
+                    return String.valueOf(y.repr());
+                }).collect(Collectors.toList())
             ).collect(Collectors.toList());
         
-        stringList.forEach((x) -> {
-            System.out.println(String.join(" ", String.valueOf(x)));
-        });
+        // stringList.forEach((x) -> {
+        //     System.out.println(String.join("", x));
+        // });
+
+        for (int i = stringList.size()-1; i>=0; i--) {
+            List<String> row = stringList.get(i);
+            Collections.reverse(row);
+            System.out.println(String.join("", row));
+        }
 
         return stringList;
     }

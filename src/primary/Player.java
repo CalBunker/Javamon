@@ -1,12 +1,13 @@
 package primary;
 
-import java.util.Scanner;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import pokemon.Pokemon;
 import utils.user.*;
 
-public class Player {
+public class Player implements Serializable {
+    private static final long serialVersionUID = 32L;
+
     // Player Name
     private String name;
     // Pokemon Storage
@@ -90,20 +91,19 @@ public class Player {
     }
 
     // Grants the player XP, silence bool silences the level up text
-    public void addXP(int amount, boolean silence, Scanner scan){
-        if (silence){
-        } else {
-            int lvl = getLevel();
-            xp =+ amount;
+    public void addXP(int amount, boolean silence){
+        int lvl = getLevel();
+        xp =+ amount;
 
-            if (getLevel() != lvl){
+        // If their level is the same, or there needs to be silence,
+        // exit the method
+        if (getLevel() == lvl || silence) return;
 
-                Screen.typed("You leveled up! Your new player level is: "+getLevel());
-                scan.nextLine();
+        Screen.typed("You leveled up! Your new player level is: "+getLevel());
+    }
 
-            } else{
-            }
-        }
+    public void addXP(int amount) {
+        addXP(amount, false);
     }
 
     // Set X location

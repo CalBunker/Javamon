@@ -6,11 +6,11 @@ import java.util.Scanner;
 public class GameManager {
     public static final boolean PLAY_INTRO = true;
 
-    public static World setup(Scanner scan) {
+    public static World setup(Scanner scan, boolean playIntro) {
         String playerName;
 
         // INTRODUCTION
-        if (PLAY_INTRO) {
+        if (PLAY_INTRO && playIntro) {
             try {
                 playerName = startIntroduction(scan);
             } catch (Exception e) {playerName = "undefined";}
@@ -56,7 +56,9 @@ public class GameManager {
             "Move East",
             "Move West",
             "Move South",
+            "-",
             "Open Backpack",
+            "Open Map",
             "Close Game");
         
         try {
@@ -90,17 +92,29 @@ public class GameManager {
                 world.offsetPlayer(0, -1, scan);
                 break;
 
-            case 4: // Open Backpack
+            case 4:
+                Screen.typed("Congrats! You found an easter egg! Now move along...");
+                break;
+
+            case 5: // Open Backpack
                 world.player.printBag();
                 break;
 
-            case 5: // Exit
+            case 6:
+                openMap(world);
+                break;
+
+            case 7: // Exit
                 return false;
             default:
                 break;
         }
 
         return true;
+    }
+
+    private static void openMap(World world) {
+        renderMiniMap(world, world.player, 8, true);
     }
 
     private static void printStatistics(World world) {
@@ -112,21 +126,24 @@ public class GameManager {
         renderMiniMap(world, player);
     }
 
-    private static void renderMiniMap(World world, Player player) {
-        String[][] miniMap = new String[3][3];
+    private static void renderMiniMap(World world, Player player, int radius, boolean hideUnexplored) {
+        String[][] miniMap = new String[radius*2 + 1][radius*2 + 1];
 
-        int maxLeft = player.getXPos()-1;
-        int maxRight = player.getXPos()+1;
+        int maxLeft = player.getXPos()-radius;
+        int maxRight = player.getXPos()+radius;
         
-        int maxTop = player.getYPos()+1;
-        int maxBottom = player.getYPos()-1;
+        int maxTop = player.getYPos()+radius;
+        int maxBottom = player.getYPos()-radius;
 
         int yCount = 0;
         for (int y = maxTop; y >= maxBottom; y--) {
             int xCount = 0;
             for (int x = maxLeft; x <= maxRight; x++) {
                 try {
-                    miniMap[yCount][xCount] = String.valueOf(world.getTile(x, y).repr());
+
+                    boolean renderVoid = hideUnexplored && !world.getTile(x, y).explored;
+                    miniMap[yCount][xCount] = renderVoid ?"█": String.valueOf(world.getTile(x, y).repr());
+
                 } catch (IndexOutOfBoundsException e) {
                     miniMap[yCount][xCount] = " ";
                 }
@@ -137,13 +154,35 @@ public class GameManager {
             yCount++;
         }
 
-        System.out.println();
+        miniMap[radius][radius] = "X";
+
+        // Print top section
+        System.out.print("╔");
+        for (int i = 0; i < (miniMap.length*2)+1; i++) {
+            System.out.print("═");
+        }
+        System.out.println("╗");
+
+        // Prints the middle section
         for (String[] row : miniMap) {
+            System.out.print("║ ");
             for (String item : row) {
                 System.out.print(item + " ");
             }
+            System.out.print("║");
             System.out.println();
         }
+
+        // Print bottom section
+        System.out.print("╚");
+        for (int i = 0; i < (miniMap.length*2)+1; i++) {
+            System.out.print("═");
+        }
+        System.out.println("╝");
+    }
+
+    private static void renderMiniMap(World world, Player player) {
+        renderMiniMap(world, player, 1, false);
     }
 
     private static String startIntroduction(Scanner scan) throws InterruptedException {

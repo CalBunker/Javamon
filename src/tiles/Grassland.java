@@ -9,12 +9,14 @@ import pokemon.*;
 import primary.*;
 
 public class Grassland extends Tile {
+    private static final long serialVersionUID = 32L;
+
     public Pokemon genPokemon(){
-        int pokeR = Statics.genRNum(0,1);
+        int pokeR = Statics.genRNum(0,2);
 
         if (pokeR == 1) return null;
 
-        int pokeType = Statics.genRNum(0, 3);
+        int pokeType = Statics.genRNum(0, 4);
         
         return switch (pokeType) {
             case 0 -> new Water(Statics.genRNum(1,25));
