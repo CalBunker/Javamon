@@ -125,7 +125,11 @@ public class GameManager {
         for (int y = maxTop; y >= maxBottom; y--) {
             int xCount = 0;
             for (int x = maxLeft; x <= maxRight; x++) {
-                miniMap[yCount][xCount] = String.valueOf(world.getTile(x, y).repr());
+                try {
+                    miniMap[yCount][xCount] = String.valueOf(world.getTile(x, y).repr());
+                } catch (IndexOutOfBoundsException e) {
+                    miniMap[yCount][xCount] = " ";
+                }
 
                 xCount++;
             }

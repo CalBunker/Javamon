@@ -27,6 +27,8 @@ public class Swamp extends Tile {
     @Override
     public void activate(Player player, Scanner scan) {
         Screen.typed("You entered the swamp...");
+        Screen.awaitUser(scan);
+
         Pokemon pokemon = genPokemon();
         
         if (pokemon == null) { Screen.typed("You found nothing. :("); return; }
