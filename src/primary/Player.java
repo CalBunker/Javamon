@@ -99,8 +99,7 @@ public class Player {
             if (getLevel() != lvl){
 
                 Screen.typed("You leveled up! Your new player level is: "+getLevel());
-                scan.nextLine();
-
+                Screen.awaitUser(scan);
             } else{
             }
         }
