@@ -57,7 +57,7 @@ public class GameManager {
             "Move West",
             "Move South",
             "Open Backpack",
-            "Back");
+            "Close Game");
         
         try {
             return determineDirection(action, world, scan);

@@ -27,6 +27,7 @@ public class Mountain extends Tile {
 
     @Override
     public void activate(Player player, Scanner scan) {
+        Screen.typed("You entered the mountain...");
         Pokemon pokemon = genPokemon();
         
         if (pokemon == null) { Screen.typed("You found nothing. :("); return; }

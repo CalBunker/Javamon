@@ -76,8 +76,6 @@ public class PokeBattle {
 
         if (win) {
             Screen.typed("You won the battle!");
-            player.addPokemon(pokemon);
-
             boolean action2 = Question.requestBoolean(scan, "Would you like to catch the wild Pokemon? (y/n)");
 
             if (action2) {

@@ -26,6 +26,9 @@ public class Grassland extends Tile {
 
     @Override
     public void activate(Player player, Scanner scan) {
+        Screen.typed("You entered the grassland...");
+        Screen.typed("<Press Enter to Continue>");
+        scan.nextLine();
         Pokemon pokemon = genPokemon();
 
         // If there is no pokemon
