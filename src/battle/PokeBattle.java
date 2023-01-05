@@ -23,7 +23,7 @@ public class PokeBattle {
     // does the necessary logic to determine if a pokemon is caught
     private static boolean calculateCatch(Pokemon pokemon, Player player) {
         int level = pokemon.getLevel();
-        int catchRate = (level-(player.getLevel()*4))/2;
+        int catchRate = (level-(player.getLevel()*5))/4;
         
         int catchChance;
         if (catchRate > 0) {
