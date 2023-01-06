@@ -4,7 +4,7 @@ import utils.Statics;
 
 import java.util.Scanner;
 
-import battle.PokeBattle;
+import events.PokeEncounter;
 import pokemon.*;
 import primary.*;
 
@@ -22,7 +22,7 @@ public class Mistlands extends Tile {
         
         if (pokemon == null) { Screen.typed("You found nothing. :("); return; }
 
-        PokeBattle.handlePokemon(pokemon, player, scan);
+        PokeEncounter.handlePokemon(pokemon, player, scan);
     }
 
     @Override

@@ -19,7 +19,7 @@ public class EditUI {
         DELETE,
         ADD,
         RENAME,
-        USE,
+        LOAD,
         BACK
     }
 
@@ -143,7 +143,7 @@ public class EditUI {
             case ADD:    return add(eItem);
             case DELETE: return delete(chosen, eItem, baseClass);
             case RENAME: return rename(scan, eItem);
-            case USE:    return use(player, eItem);
+            case LOAD:    return use(player, eItem);
             case BACK:   return ResolveType.BREAK;
         }
 
@@ -189,7 +189,7 @@ public class EditUI {
         ArrayList<Actions> actions = new ArrayList<Actions>();
 
         if (x.canUse()) {
-            actions.add(Actions.USE);
+            actions.add(Actions.LOAD);
         }
 
         if (x.canRename()) {

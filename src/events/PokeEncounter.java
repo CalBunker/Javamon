@@ -1,4 +1,4 @@
-package battle;
+package events;
 
 import java.util.Scanner;
 
@@ -8,7 +8,7 @@ import utils.Statics;
 import utils.user.Question;
 import utils.user.Screen;
 
-public class PokeBattle {
+public class PokeEncounter extends Event {
     public static Scanner scan;
 
     // does the necessary battle logic to determine a winner
