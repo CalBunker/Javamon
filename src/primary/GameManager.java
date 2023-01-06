@@ -15,7 +15,7 @@ public class GameManager {
                 playerName = startIntroduction(scan);
             } catch (Exception e) {playerName = "undefined";}
         } else {
-            playerName = "f";
+            playerName = Question.requestString(scan, "Give your name:");
         }
 
         // ===
