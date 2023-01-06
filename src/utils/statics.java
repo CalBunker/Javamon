@@ -50,4 +50,19 @@ public class Statics {
         return (float) ((1-percentage)*(double) diff) + min;
 
     }
+
+    /**
+     * Converts a list of enums into a list of strings.
+     * @param x A list of enums to convert
+     * @return The list of Strings.
+     */
+    public static String[] fromEnumToString(Enum<?>[] x) {
+        String[] appendable = new String[x.length];
+
+        for (int i = 0; i < x.length; i++) {
+            appendable[i] = x[i].name();
+        }
+
+        return appendable;
+    }
 }

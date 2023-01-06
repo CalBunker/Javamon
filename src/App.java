@@ -6,6 +6,8 @@ import primary.World;
 import utils.save.Save;
 import utils.user.Question;
 import utils.user.Screen;
+import utils.user.editables.EditUI;
+import utils.user.editables.EditUI.ExitType;
 
 public class App {
     public static Save determineSave(Scanner scan) {
@@ -20,7 +22,20 @@ public class App {
             return new Save(GameManager.setup(scan, true));
         }
 
-        Save save = Save.chooseSaves(scan, saves);
+        Save save;
+        while (true) {
+            EditUI results = Save.chooseSaves(scan, saves);
+
+            if (results == null) {
+                save = null;
+                break;
+            }
+            else if (results.exitType == ExitType.EXIT) continue;
+            else {
+                save = (Save) results.returnItem;
+                break;
+            }
+        }
 
         // If the player chooses a save, load the save
         if (save != null) return save.updateDate();

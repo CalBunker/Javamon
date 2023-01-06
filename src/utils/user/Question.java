@@ -56,7 +56,7 @@ public class Question {
      */
     public static String requestString(Scanner scan, String question) {
         System.out.println(question);
-        System.out.print(">>> ");
+        System.out.print("> ");
         return scan.nextLine();
     }
 

@@ -11,10 +11,13 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Scanner;
 
+import primary.Player;
 import primary.World;
 import utils.user.Question;
+import utils.user.editables.EditUI;
+import utils.user.editables.EditableItem;
 
-public class Save implements Serializable {
+public class Save implements Serializable, EditableItem {
     private static final long serialVersionUID = 32L;
 
     private static final String FOLDER_LOCATION = "data";
@@ -26,6 +29,7 @@ public class Save implements Serializable {
     World world;
 
     public Date date_made;
+    public String name;
 
     public Save(World world) {
         counter++;
@@ -116,24 +120,61 @@ public class Save implements Serializable {
         return this;
     }
 
-    public static Save chooseSaves(Scanner scan, Save[] saves) {
-        String[] options = new String[saves.length+1];
+    public static EditUI chooseSaves(Scanner scan, Save[] saves) {
+        EditUI eUI = new EditUI(saves);
 
-        // Arrange items into list
-        for (int i = 0; i < saves.length; i++) {
-            Save item = saves[i];
-            Date date = item.date_made;
+        eUI.initialize(scan, "Please choose a save", saves[0], null);
+        
+        if (eUI.createNew) return null;
 
-            options[i] = date.toString();
-        }
-        options[options.length-1] = "New Save";
+        return eUI;
+    }
 
-        // Ask for user to choose option
-        int answer = Question.chooseItem(scan, "Please choose a save", options);
+    @Override
+    public boolean canDelete() {return true;}
 
-        // If they choose new save, make a new save
-        if (options[answer].equals(options[options.length-1])) return null;
+    @Override
+    public Success delete() {
+        File f = new File(fileName);
+        f.delete();
+        return Success.TRUE;
+    }
 
-        return saves[answer];
+    @Override
+    public boolean canAdd() {return true;}
+
+    @Override
+    public Success add() {
+        return null;
+    }
+
+    @Override
+    public boolean isCompleteObjectAddition() {
+        return true;
+    }
+
+    @Override
+    public boolean canRename() {return true;}
+
+    @Override
+    public Success rename(Scanner scan) {
+        name = Question.requestString(scan, "Enter a new name");
+        saveGame();
+
+        return Success.TRUE;
+    }
+
+    @Override
+    public boolean canUse() {return true;}
+
+    @Override
+    public Success use(Player instigator) {
+        return Success.TRUE;
+    }
+
+    @Override
+    public String toString() {
+        if (name == null) return date_made.toString();
+        else              return name;
     }
 }
