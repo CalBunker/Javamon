@@ -39,7 +39,8 @@ public class PokeEncounter extends Event {
         }
     }
 
-    public static void handlePokemon(Pokemon pokemon, Player player, Scanner scans) {
+    @Override
+    public ResolveType handleEvent(Pokemon pokemon, Player player, Scanner scans) {
         scan = scans;
 
         Screen.typed("You found a " + pokemon.getName()+"!");
@@ -57,6 +58,8 @@ public class PokeEncounter extends Event {
                 Screen.typed("You ran away!");
                 break;
         }
+
+        return ResolveType.SUCCESS;
     }
 
     private static void catchPoke(Pokemon pokemon, Player player) {

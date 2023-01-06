@@ -25,7 +25,7 @@ public class Mountain extends Tile {
         
         if (pokemon == null) { Screen.typed("You found nothing. :("); return; }
 
-        PokeEncounter.handlePokemon(pokemon, player, scan);
+        new PokeEncounter().handleEvent(pokemon, player, scan);
     }
 
     @Override

@@ -1,10 +1,15 @@
 package events;
 
-import pokemon.*;
-import primary.*;
-import utils.user.*;
-import utils.*;
+import java.util.Scanner;
 
-public class Event {
-    
+import pokemon.Pokemon;
+import primary.Player;
+
+public abstract class Event {
+    public enum ResolveType {
+        SUCCESS,
+        FAIL
+    }
+
+    public abstract ResolveType handleEvent(Pokemon pokemon, Player player, Scanner scans);
 }
