@@ -3,16 +3,10 @@ import utils.user.*;
 
 import java.util.Scanner;
 
-import pokemon.Pokemon;
 import primary.*;
 
 public class Home extends Tile {
     private static final long serialVersionUID = 32L;
-
-    @Override
-    public Pokemon genPokemon() {
-        return null;
-    }
 
     @Override
     public void activate(Player player, Scanner scan) {

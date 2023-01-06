@@ -11,20 +11,14 @@ import primary.*;
 public class Mistlands extends Tile {
     private static final long serialVersionUID = 32L;
 
-    public Pokemon genPokemon(){
-        int pokeR = Statics.genRNum(0,2);
-
-        if (pokeR == 1) return null;
-
-        return new Dragon(Statics.genRNum(76,99));        
-    }
-
     @Override
     public void activate(Player player, Scanner scan) {
         Screen.typed("You entered the mistlands...");
         Screen.awaitUser(scan);
 
-        Pokemon pokemon = genPokemon();
+        Pokemon pokemon = genPokemon(
+            new Dragon(Statics.genRNum(76,99))
+        );
         
         if (pokemon == null) { Screen.typed("You found nothing. :("); return; }
 

@@ -22,7 +22,7 @@ public class Statics {
      * @param x The List of Strings
      * @return The random item chosen.
      */
-    public static String pickRItem(String[] x) {
+    public static <T> T pickRItem(T[] x) {
         return x[new Random().nextInt(x.length-1)];
     }
 

@@ -51,6 +51,8 @@ public class App {
         Scanner scan = new Scanner(System.in);
         Screen.clear();
 
+        GameManager.runLogo(scan);
+
         Save mainSave = determineSave(scan);
         World world = mainSave.getWorld();
         

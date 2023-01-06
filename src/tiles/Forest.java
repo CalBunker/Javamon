@@ -9,28 +9,19 @@ import pokemon.*;
 import primary.*;
 
 public class Forest extends Tile {
-    public Pokemon genPokemon(){
-        int pokeR = Statics.genRNum(0,2);
-
-        if (pokeR == 1) return null;
-
-        int pokeType = Statics.genRNum(0, 4);
-        
-        return
-            switch (pokeType) {
-                    case 0 -> new Water(Statics.genRNum(21,45));
-                    case 1 -> new Grass(Statics.genRNum(21,45));
-                    case 2 -> new Fighting(Statics.genRNum(21,45));
-                    default -> new Normal(Statics.genRNum(21,45));
-            };
-    }
+    private static final long serialVersionUID = 32L;
 
     @Override
     public void activate(Player player, Scanner scan) {
         Screen.typed("You entered the forest...");
         Screen.awaitUser(scan);
 
-        Pokemon pokemon = genPokemon();
+        Pokemon pokemon = genPokemon(
+            new Water(Statics.genRNum(21,45)),
+            new Grass(Statics.genRNum(21,45)),
+            new Fighting(Statics.genRNum(21,45)),
+            new Normal(Statics.genRNum(21,45))
+        );
         
         if (pokemon == null) { Screen.typed("You found nothing. :("); return; }
 

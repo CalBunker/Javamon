@@ -11,27 +11,16 @@ import primary.*;
 public class Swamp extends Tile {
     private static final long serialVersionUID = 32L;
 
-    public Pokemon genPokemon(){
-        int pokeR = Statics.genRNum(0,2);
-
-        if (pokeR == 1) return null;
-
-        int pokeType = Statics.genRNum(0, 3);
-
-        return
-            switch (pokeType) {
-                    case 0 -> new Ghost(Statics.genRNum(61,85));
-                    case 1 -> new Dark(Statics.genRNum(61,85));
-                    default -> new Poison(Statics.genRNum(61,85));
-            };
-    }
-
     @Override
     public void activate(Player player, Scanner scan) {
         Screen.typed("You entered the swamp...");
         Screen.awaitUser(scan);
 
-        Pokemon pokemon = genPokemon();
+        Pokemon pokemon = genPokemon(
+            new Ghost(Statics.genRNum(61,85)),
+            new Dark(Statics.genRNum(61,85)),
+            new Poison(Statics.genRNum(61,85))
+        );
         
         if (pokemon == null) { Screen.typed("You found nothing. :("); return; }
 

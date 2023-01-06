@@ -185,29 +185,12 @@ public class GameManager {
         renderMiniMap(world, player, 1, false);
     }
 
-    private static String startIntroduction(Scanner scan) throws InterruptedException {
+    public static String startIntroduction(Scanner scan) throws InterruptedException {
         // ===
         // MAIN MENU
         // ===
         Screen.clear();
-        System.out.println("                         LogiBunk Studios Presents:");
-        System.out.println("    ___  ________  ___      ___ ________  _____ ______   ________  ________      ");
-        Thread.sleep(400);
-        System.out.println("   |\\  \\|\\   __  \\|\\  \\    /  /|\\   __  \\|\\   _ \\  _   \\|\\   __  \\|\\   ___  \\    ");
-        Thread.sleep(400);
-        System.out.println("   \\ \\  \\ \\  \\|\\  \\ \\  \\  /  / | \\  \\|\\  \\ \\  \\\\\\__\\ \\  \\ \\  \\|\\  \\ \\  \\\\ \\  \\   ");
-        Thread.sleep(400);
-        System.out.println(" __ \\ \\  \\ \\   __  \\ \\  \\/  / / \\ \\   __  \\ \\  \\\\|__| \\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\  ");
-        Thread.sleep(400);
-        System.out.println("|\\  \\\\_\\  \\ \\  \\ \\  \\ \\    / /   \\ \\  \\ \\  \\ \\  \\    \\ \\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\ ");
-        Thread.sleep(400);
-        System.out.println("\\ \\________\\ \\__\\ \\__\\ \\__/ /     \\ \\__\\ \\__\\ \\__\\    \\ \\__\\ \\_______\\ \\__\\\\ \\__\\");
-        Thread.sleep(400);
-        System.out.println(" \\|________|\\|__|\\|__|\\|__|/       \\|__|\\|__|\\|__|     \\|__|\\|_______|\\|__| \\|__|");
-        Thread.sleep(400);
-        System.out.println("                         Press Enter to Continue...");
-        scan.nextLine();
-        Screen.clear();
+        // runLogo(scan);
 
         Screen.typed("First, there was nothing.");
         Screen.typed("Then, there was something.");
@@ -241,5 +224,26 @@ public class GameManager {
         Screen.clear();
 
         return playerName;
+    }
+
+    public static void runLogo(Scanner scan) throws InterruptedException {
+        System.out.println("                         LogiBunk Studios Presents:");
+        System.out.println("    ___  ________  ___      ___ ________  _____ ______   ________  ________      ");
+        Thread.sleep(400);
+        System.out.println("   |\\  \\|\\   __  \\|\\  \\    /  /|\\   __  \\|\\   _ \\  _   \\|\\   __  \\|\\   ___  \\    ");
+        Thread.sleep(400);
+        System.out.println("   \\ \\  \\ \\  \\|\\  \\ \\  \\  /  / | \\  \\|\\  \\ \\  \\\\\\__\\ \\  \\ \\  \\|\\  \\ \\  \\\\ \\  \\   ");
+        Thread.sleep(400);
+        System.out.println(" __ \\ \\  \\ \\   __  \\ \\  \\/  / / \\ \\   __  \\ \\  \\\\|__| \\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\  ");
+        Thread.sleep(400);
+        System.out.println("|\\  \\\\_\\  \\ \\  \\ \\  \\ \\    / /   \\ \\  \\ \\  \\ \\  \\    \\ \\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\ ");
+        Thread.sleep(400);
+        System.out.println("\\ \\________\\ \\__\\ \\__\\ \\__/ /     \\ \\__\\ \\__\\ \\__\\    \\ \\__\\ \\_______\\ \\__\\\\ \\__\\");
+        Thread.sleep(400);
+        System.out.println(" \\|________|\\|__|\\|__|\\|__|/       \\|__|\\|__|\\|__|     \\|__|\\|_______|\\|__| \\|__|");
+        Thread.sleep(400);
+        System.out.println("                         Press Enter to Continue...");
+        scan.nextLine();
+        Screen.clear();
     }
 }
