@@ -18,7 +18,7 @@ public class Pokemon implements Serializable {
 
     // Get Pokemon Name
     public String getName() {
-        return name;
+        return name+" lvl " + level;
     }
 
     // Get Pokemon Level
