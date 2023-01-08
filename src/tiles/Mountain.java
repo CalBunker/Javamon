@@ -16,7 +16,7 @@ public class Mountain extends Tile {
         Screen.typed("You entered the mountain...");
         Screen.awaitUser(scan);
 
-        Pokemon pokemon = genPokemon(
+        Pokemon pokemon = genPokemon( 10,
             new Psychic(Statics.genRNum(41,65)),
             new Rock(Statics.genRNum(41,65)),
             new Ground(Statics.genRNum(41,65)),

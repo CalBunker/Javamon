@@ -16,7 +16,7 @@ public class Forest extends Tile {
         Screen.typed("You entered the forest...");
         Screen.awaitUser(scan);
 
-        Pokemon pokemon = genPokemon(
+        Pokemon pokemon = genPokemon( 10,
             new Water(Statics.genRNum(21,45)),
             new Grass(Statics.genRNum(21,45)),
             new Fighting(Statics.genRNum(21,45)),

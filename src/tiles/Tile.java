@@ -28,9 +28,9 @@ public abstract class Tile implements Serializable {
      * @return A possible pokemon
      */
     public Pokemon genPokemon(int outOfChance, Pokemon... pokemonToSpawn) {
-        int pokeR = Statics.genRNum(0,outOfChance);
+        int pokeR = Statics.genRNum(0, outOfChance);
         
-        if (pokeR != 0) return null;
+        if (pokeR == 0) return null;
 
         return Statics.pickRItem(pokemonToSpawn);
     }

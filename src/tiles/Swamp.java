@@ -16,7 +16,7 @@ public class Swamp extends Tile {
         Screen.typed("You entered the swamp...");
         Screen.awaitUser(scan);
 
-        Pokemon pokemon = genPokemon(
+        Pokemon pokemon = genPokemon( 10,
             new Ghost(Statics.genRNum(61,85)),
             new Dark(Statics.genRNum(61,85)),
             new Poison(Statics.genRNum(61,85))

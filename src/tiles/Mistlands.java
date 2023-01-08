@@ -16,7 +16,7 @@ public class Mistlands extends Tile {
         Screen.typed("You entered the mistlands...");
         Screen.awaitUser(scan);
 
-        Pokemon pokemon = genPokemon(
+        Pokemon pokemon = genPokemon( 10,
             new Dragon(Statics.genRNum(76,99))
         );
         

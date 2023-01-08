@@ -16,7 +16,7 @@ public class Grassland extends Tile {
         Screen.typed("You entered the grassland...");
         Screen.awaitUser(scan);
         
-        Pokemon pokemon = genPokemon(
+        Pokemon pokemon = genPokemon(10,
             new Water(Statics.genRNum(1,25)),
             new Grass(Statics.genRNum(1,25)),
             new Fire(Statics.genRNum(1,25)),
