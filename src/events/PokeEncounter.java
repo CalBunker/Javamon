@@ -43,7 +43,8 @@ public class PokeEncounter extends Event {
     public ResolveType handleEvent(Pokemon pokemon, Player player, Scanner scans) {
         scan = scans;
 
-        Screen.typed("You found a " + pokemon.getName()+"!");
+        Screen.typed("You found a " + pokemon +"!");
+        Screen.typed("You sent out " + player.getActivePokemon() + "!");
 
         int action = Question.chooseItem(scan, "Choose an action:", "Fight!", "Catch!", "Run!");
 

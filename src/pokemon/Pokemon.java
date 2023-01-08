@@ -18,16 +18,16 @@ public class Pokemon implements Serializable {
 
     // Get Pokemon Name
     public String getName() {
-        return name+" lvl " + level;
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return name+" lvl "+level;
     }
 
     // Get Pokemon Level
     public int getLevel() {
         return level;
-    }
-
-    public String printName() {
-        String string = name+" lvl "+level;
-        return string;
     }
 }

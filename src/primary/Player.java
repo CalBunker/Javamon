@@ -11,7 +11,7 @@ public class Player implements Serializable {
     // Player Name
     private String name;
     // Pokemon Storage
-    private ArrayList<Pokemon> Pokemon = new ArrayList<Pokemon>();
+    private ArrayList<Pokemon> pokemon = new ArrayList<Pokemon>();
     // X location
     private int xPos;
     // Y location
@@ -27,7 +27,7 @@ public class Player implements Serializable {
         xPos = x;
         yPos = y;
         Pokemon starter = new Pokemon("Shuckle", 15);
-        Pokemon.add(starter);
+        pokemon.add(starter);
         activePokemon = starter;
     }
 
@@ -38,7 +38,7 @@ public class Player implements Serializable {
 
     // Get Pokemon Storage
     public ArrayList<Pokemon> getPokemon() {
-        return Pokemon;
+        return pokemon;
     }
 
     // Calculate Player Level
@@ -75,19 +75,19 @@ public class Player implements Serializable {
     }
 
     // Add Pokemon to Storage
-    public void addPokemon(Pokemon pokemon) {
-        Pokemon.add(pokemon);
+    public void addPokemon(Pokemon pokemon1) {
+        pokemon.add(pokemon1);
         if (activePokemon == null) {
-            activePokemon = pokemon;
+            activePokemon = pokemon1;
         }
-        else if (pokemon.getLevel() > activePokemon.getLevel()) {
-            activePokemon = pokemon;
+        else if (pokemon1.getLevel() > activePokemon.getLevel()) {
+            activePokemon = pokemon1;
         }
     }
 
     // Remove Pokemon from Storage
-    public void removePokemon(Pokemon pokemon) {
-        Pokemon.remove(pokemon);
+    public void removePokemon(Pokemon pokemon1) {
+        pokemon.remove(pokemon1);
     }
 
     // Grants the player XP, silence bool silences the level up text
@@ -123,8 +123,8 @@ public class Player implements Serializable {
 
     // Print out the Pokemon in the player's bag
     public void printBag() {
-        for (int i = 0; i < Pokemon.size(); i++) {
-            Screen.typed(Pokemon.get(i).printName());
+        for (int i = 0; i < pokemon.size(); i++) {
+            Screen.typed(pokemon.get(i).toString());
         }
     }
 
