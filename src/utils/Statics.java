@@ -23,6 +23,10 @@ public class Statics {
      * @return The random item chosen.
      */
     public static <T> T pickRItem(T[] x) {
+        if (x.length == 0) return null;
+
+        if (x.length == 1) return x[0];
+
         return x[new Random().nextInt(x.length-1)];
     }
 
