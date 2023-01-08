@@ -13,7 +13,7 @@ public class Statics {
         Random rand = new Random();
 
         if (max-min == 0) return 0+min;
-        else              return rand.nextInt(max-min);
+        else              return rand.nextInt(max-min)+min;
     }
 
     /**
