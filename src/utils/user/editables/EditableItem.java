@@ -9,6 +9,13 @@ public abstract interface EditableItem {
         TRUE,
         FALSE,
         ABOVE_HANDLE;
+
+        /**
+         * Convert the value of the
+         * enum to a true/false/null
+         * statement.
+         * @return A boolean.
+         */
         public Boolean convert() {
             switch (this) {
                 case TRUE: return true;

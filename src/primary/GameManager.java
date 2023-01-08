@@ -6,6 +6,13 @@ import java.util.Scanner;
 public class GameManager {
     public static final boolean PLAY_INTRO = true;
 
+    /**
+     * The main world setup.
+     * @param scan The main Scanner object
+     * @param playIntro If the introduction
+     * for a new game should play.
+     * @return The newly created world.
+     */
     public static World setup(Scanner scan, boolean playIntro) {
         String playerName;
 
@@ -113,19 +120,43 @@ public class GameManager {
         return true;
     }
 
+    /**
+     * When the user opens the map
+     * @param world The world 
+     * currently being played in.
+     */
     private static void openMap(World world) {
         renderMiniMap(world, world.player, 8, true);
     }
 
+    /**
+     * Print the statistics of the
+     * player in the world.
+     * @param world The current world
+     * being played in.
+     */
     private static void printStatistics(World world) {
         Player player = world.player;
 
-        System.out.println("Player Coords - (" + world.player.getXPos() + ", " + world.player.getYPos() + ")");
-        System.out.println("Current Tile: " + world.getTile(world.player.getXPos(), world.player.getYPos()).getName());
+        System.out.println("Player Coords - (" + player.getXPos() + ", " + player.getYPos() + ")");
+        System.out.println("Current Tile: " + world.getTile(player.getXPos(), player.getYPos()).getName());
 
-        renderMiniMap(world, player);
+        renderMiniMap(world);
     }
-
+    
+    /**
+     * Render the minimap/map
+     * @param world The current
+     * world being played in
+     * @param player The current
+     * player inside of the world
+     * @param radius The radius
+     * of the minimap to render
+     * @param hideUnexplored if
+     * the unexplored tiles should
+     * be rendered with a letter
+     * or not.
+     */
     private static void renderMiniMap(World world, Player player, int radius, boolean hideUnexplored) {
         String[][] miniMap = new String[radius*2 + 1][radius*2 + 1];
 
@@ -181,10 +212,25 @@ public class GameManager {
         System.out.println("╝");
     }
 
-    private static void renderMiniMap(World world, Player player) {
-        renderMiniMap(world, player, 1, false);
+    /**
+     * A shorter version of the
+     * render minimap
+     * @param world The current
+     * world being played in.
+     */
+    private static void renderMiniMap(World world) {
+        renderMiniMap(world, world.player, 1, false);
     }
 
+    /**
+     * The introduction to a
+     * new game.
+     * @param scan The main
+     * Scanner object in use.
+     * @return The user's name.
+     * @throws InterruptedException If the
+     * user ^c during marquee play.
+     */
     public static String startIntroduction(Scanner scan) throws InterruptedException {
         // ===
         // MAIN MENU
@@ -226,6 +272,15 @@ public class GameManager {
         return playerName;
     }
 
+    /**
+     * The main logi-bunk studios
+     * logo.
+     * @param scan The main current
+     * Scanner object
+     * @throws InterruptedException 
+     * If the user ^c out of the program
+     * during marquee play.
+     */
     public static void runLogo(Scanner scan) throws InterruptedException {
         System.out.println("                         LogiBunk Studios Presents:");
         System.out.println("    ___  ________  ___      ___ ________  _____ ______   ________  ________      ");

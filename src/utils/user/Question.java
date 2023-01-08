@@ -60,6 +60,23 @@ public class Question {
         return scan.nextLine();
     }
 
+    /**
+     * Request a String
+     * with possible answers
+     * from the user.
+     * @param scan The current
+     * Scanner object in the
+     * current context.
+     * @param question The
+     * question to ask the user.
+     * @param answers Possible
+     * answers for the user to
+     * input; basically a levelled
+     * up version of request an
+     * integer with a list of
+     * options.
+     * @return
+     */
     public static String requestString(Scanner scan, String question, String... answers) {
         String[] possibleAnswers = new String[answers.length];
         for (int i = 0; i < answers.length; i++) {
@@ -73,6 +90,7 @@ public class Question {
 
         while (true) {
             String answer = requestString(scan, question+"\n"+stringedAnswer);
+            answer = answer.strip().toLowerCase();
 
             if (checkIfInArr(possibleAnswers, answer)) return answer;
             else {
@@ -112,7 +130,22 @@ public class Question {
         }
     }
 
+    /**
+     * Have a user choose an
+     * option, and return the
+     * associated object with
+     * their answer.
+     * @param scan
+     * @param question
+     * @param options
+     * @param answers
+     * @return
+     */
     public static Object chooseItem(Scanner scan, String question, String[] options, Object[] answers) {
+        if (options.length != answers.length) {
+            throw new ArrayStoreException("The options answer need to be the same length.");
+        }
+
         while (true) {
             printIndexedArray(options);
             int answer = requestInt(scan, question);
@@ -140,6 +173,9 @@ public class Question {
     }
 
     /**
+     * Converts the user's answer
+     * from a normal English string
+     * into an true/false statement.
      * @return The user's answer as a boolean
      */
     public static boolean requestBoolean(Scanner scan, String question) {

@@ -179,6 +179,20 @@ public class World implements Serializable {
         return worldTiles;
     }
 
+    /**
+     * Offset the player from
+     * their current location.
+     * @param x The x offset
+     * @param y The y offset
+     * @param updateTile If the tile
+     * the player lands on should
+     * be activated.
+     * @param scan The current Scanner
+     * object in the current context.
+     * @throws IndexOutOfBoundsException If
+     * the player is offsetted out of 
+     * existence.
+     */
     public void offsetPlayer(int x, int y, boolean updateTile, Scanner scan) throws IndexOutOfBoundsException {
         if (!checkTileExists(player.getXPos()+ x, player.getYPos() + y)) {
             throw new IndexOutOfBoundsException("Player cannot fall off map.");
@@ -189,14 +203,45 @@ public class World implements Serializable {
         if (updateTile) getTile(player.getXPos(), player.getYPos()).activation(player, scan);
     }
 
+    /**
+     * Offset the player from
+     * their current location.
+     * (updateTile defaults true)
+     * @param x The x offset
+     * @param y The y offset
+     * @param scan The current
+     * Scanner object in the current
+     * context.
+     * @throws IndexOutOfBoundsException If
+     * the player is offsetted out of 
+     * existence.
+     */
     public void offsetPlayer(int x, int y, Scanner scan) throws IndexOutOfBoundsException {
         offsetPlayer(x, y, true, scan);
     }
 
+    /**
+     * Get the tile based off
+     * of the x and y position.
+     * @param x The x position.
+     * @param y The y position.
+     * @return A reference to the
+     * tile in that position.
+     * @throws IndexOutOfBoundsException If
+     * the tile accessed is off the map.
+     */
     public Tile getTile(int x, int y) throws IndexOutOfBoundsException {
         return worldTiles.get(y).get(x);
     }
 
+    /**
+     * Check if the the tile 
+     * exists.(Avoids the 
+     * Index out of bounds error)
+     * @param x The x position.
+     * @param y The y position.
+     * @return True if the tile exists.
+     */
     public boolean checkTileExists(int x, int y) {
         try {
             return (getTile(x, y) != null);
@@ -205,15 +250,29 @@ public class World implements Serializable {
         }
     }
 
+    /**
+     * @return True if the world
+     * has generated.
+     */
     public boolean isGenerated() {
         return generated;
     }
 
+    /**
+     * @return The ratio between
+     * x and y (between 1 and 0)
+     * <hr />
+     * {@code largest_axis/smallest_axis}
+     */
     public double getRatio() {
         if (sizeX > sizeY) return sizeX/sizeY;
         else return sizeY/sizeX;
     }
 
+    /**
+     * Visualize the entire map.
+     * @return The entire map.
+     */
     public List<List<String>> visualize() {
         
         List<List<String>> stringList = 
@@ -236,6 +295,10 @@ public class World implements Serializable {
         return stringList;
     }
 
+    /**
+     * Print the amount of each
+     * type of tile.
+     */
     public void worldBreakdown() {
         int grassland = 0;
         int forest = 0;

@@ -3,6 +3,16 @@ package utils;
 import java.util.Random;
 
 public class Statics {
+    /**
+     * Generate a number between the 
+     * minimum and maximum (maximum
+     * not included)
+     * @param min Minimum value (included)
+     * @param max Maximum value (excluded)
+     * @return The new random value
+     * @throws IndexOutOfBoundsException If 
+     * the minimum is larger than the maximum
+     */
     public static int genRNum(int min, int max) 
         throws IndexOutOfBoundsException {
         
@@ -46,6 +56,17 @@ public class Statics {
         return false;
     }
 
+    /**
+     * This will allow you to invert
+     * a number using a minimum and
+     * maximum value.
+     * @param num The number to invert
+     * @param min The minimum of the bounds
+     * @param max The maximum of the bounds
+     * @return The new inverted number
+     * <hr/>
+     * {@code invertNum(0.3, 0, 1)} -> {@code 0.7}
+     */
     public static float invertNum(float num, float min, float max) {
         float diff = max - min;
         float normNum = num-min;

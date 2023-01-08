@@ -15,6 +15,10 @@ public class EditUI {
     public boolean createNew = false;
     public ExitType exitType;
 
+    /**
+     * The possible EditUI
+     * actions of each object.
+     */
     public enum Actions {
         DELETE,
         ADD,
@@ -23,6 +27,9 @@ public class EditUI {
         BACK
     }
 
+    /**
+     * How each menu is resolved.
+     */
     public enum ResolveType {
         CONTINUE,
         BREAK,
@@ -65,13 +72,47 @@ public class EditUI {
         Collections.addAll(this.items, items);
     }
 
+    /**
+     * Start the ability for the 
+     * player to edit the list
+     * of items.
+     * @param scan The Scanner
+     * object in the current 
+     * context.
+     * @param question The question
+     * to ask the user for the objects.
+     * @param baseClass A generic 
+     * example of the object.
+     * @param player The player in 
+     * the current context.
+     * @return How the UI exists;
+     * if the user straight exitted,
+     * or if an option pulled them
+     * out.
+     */
     public ExitType initialize(Scanner scan, String question, EditableItem baseClass, Player player) {
         ExitType exit = mainLoop(scan, question, baseClass, player);
-        exitType = exit;
 
         return exit;
     }
 
+    /**
+     * The main loop for the 
+     * user to choose items
+     * to edit/use.
+     * @param scan the Scanner
+     * object in the current
+     * context.
+     * @param question The question
+     * to ask the user for the objects.
+     * @param baseClass A generic
+     * example of the object.
+     * @param player The player in
+     * the current context.
+     * @return If the user decides
+     * to exit, or if they are pulled
+     * out by an element.
+     */
     private ExitType mainLoop(Scanner scan, String question, EditableItem baseClass, Player player) {
         while (true) {
             Screen.clear();
@@ -107,7 +148,7 @@ public class EditUI {
 
             EditableItem eItem = items.get(chosen);
 
-            ResolveType resolve = manipulateItem(scan, player, chosen, eItem, baseClass);
+            ResolveType resolve = manipulateItem(scan, player, chosen, eItem);
 
             switch (resolve) {
                 case CONTINUE: continue;
@@ -117,16 +158,32 @@ public class EditUI {
         }
     }
 
-    private ResolveType manipulateItem(Scanner scan, Player player, int chosen, EditableItem eItem, EditableItem baseClass) {
+    /**
+     * When the user chooses 
+     * an item.
+     * @param scan The main
+     * Scanner object in the
+     * current context.
+     * @param player The 
+     * player in the current
+     * context.
+     * @param chosen The
+     * chosen index value.
+     * @param eItem The editable
+     * item chosen.
+     * @return How the user 
+     * left the method.
+     */
+    private ResolveType manipulateItem(Scanner scan, Player player, int chosen, EditableItem eItem) {
         while (true) {
             System.out.println(eItem.toString() + " selected.");
 
-            Actions[] allActions = availableActions(eItem, !baseClass.isCompleteObjectAddition());
+            Actions[] allActions = availableActions(eItem, !eItem.isCompleteObjectAddition());
 
             Object answer = Question.chooseItem(scan, "What would you like to do?", Statics.fromEnumToString(allActions), allActions);
             Actions action = (Actions) answer;
 
-            ResolveType newAction = determineAction(scan, player, chosen, action, eItem, baseClass);
+            ResolveType newAction = determineAction(scan, player, chosen, action, eItem);
 
             switch (newAction) {
                 case BREAK:    return ResolveType.CONTINUE;
@@ -136,12 +193,24 @@ public class EditUI {
         }
     }
 
-    private ResolveType determineAction(Scanner scan, Player player, int chosen, Actions action, EditableItem eItem, EditableItem baseClass) {
+    /**
+     * Determine how the player's
+     * action corresponds to
+     * the object.
+     * @param scan
+     * @param player
+     * @param chosen
+     * @param action
+     * @param eItem
+     * @param baseClass
+     * @return
+     */
+    private ResolveType determineAction(Scanner scan, Player player, int chosen, Actions action, EditableItem eItem) {
         returnItem = eItem;
 
         switch (action) {
             case ADD:    return add(eItem);
-            case DELETE: return delete(chosen, eItem, baseClass);
+            case DELETE: return delete(chosen, eItem);
             case RENAME: return rename(scan, eItem);
             case USE:    return use(player, eItem);
             case BACK:   return ResolveType.BREAK;
@@ -163,7 +232,7 @@ public class EditUI {
        return ResolveType.toResolve(success);
     }
 
-    private ResolveType delete(int chosen, EditableItem eItem, EditableItem baseClass) {
+    private ResolveType delete(int chosen, EditableItem eItem) {
         EditableItem.Success deleted = eItem.delete();
         Boolean resolve = deleted.convert();
 
@@ -183,8 +252,20 @@ public class EditUI {
 
     }
 
-
-
+    /**
+     * Determine the available
+     * actions for an item.
+     * @param x The EditableItem
+     * reference
+     * @param includeBack If a
+     * back option should be 
+     * included.
+     * @param includeAdd If an 
+     * add option should be 
+     * included.
+     * @return The actions available
+     * from the item chosen.
+     */
     public Actions[] availableActions(EditableItem x, boolean includeBack, boolean includeAdd) {
         ArrayList<Actions> actions = new ArrayList<Actions>();
 

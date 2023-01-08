@@ -10,13 +10,19 @@ public class Pokemon implements Serializable {
     // Pokemon Level
     private int level;
 
-    // Initialize Pokemon
+    /**
+     * Initialize the Pokemon.
+     * @param name The name of the pokemon
+     * @param level The level of the pokemon
+     */
     public Pokemon(String name, int level) {
         this.name = name;
         this.level = level;
     }
 
-    // Get Pokemon Name
+    /**
+     * @return The name of the Pokemon
+     */
     public String getName() {
         return name;
     }
@@ -26,7 +32,10 @@ public class Pokemon implements Serializable {
         return name+" lvl "+level;
     }
 
-    // Get Pokemon Level
+    /**
+     * @return The level the pokemon 
+     * is at.
+     */
     public int getLevel() {
         return level;
     }

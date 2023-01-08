@@ -10,6 +10,16 @@ import utils.user.editables.EditUI;
 import utils.user.editables.EditUI.ExitType;
 
 public class App {
+    /**
+     * Load the save object from
+     * the file by the help of 
+     * the user.
+     * @param scan The current
+     * Scanner object in the current
+     * context.
+     * @return The Save chosen
+     * by the user.
+     */
     public static Save determineSave(Scanner scan) {
         Save[] saves;
 
