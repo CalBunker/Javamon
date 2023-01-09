@@ -94,7 +94,7 @@ public class Player implements Serializable {
     // Grants the player XP, silence bool silences the level up text
     public void addXP(int amount, boolean silence){
         int lvl = getLevel();
-        xp =+ amount;
+        xp += amount;
 
         // If their level is the same, or there needs to be silence,
         // exit the method
