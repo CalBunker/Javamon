@@ -2,5 +2,7 @@
 /data/
 .DS_Store
 
+/target/
+
 *.jar
 *.zip
