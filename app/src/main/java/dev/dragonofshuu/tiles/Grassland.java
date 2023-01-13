@@ -16,10 +16,10 @@ public class Grassland extends Tile {
         Screen.awaitUser(scan);
         
         Dragon pokemon = genPokemon(10,
-            new Hydro(Statics.genRNum(1,25)),
-            new Anemo(Statics.genRNum(1,25)),
-            new Pyro(Statics.genRNum(1,25)),
-            new Dendro(Statics.genRNum(1,25))
+            new Water(Statics.genRNum(1,25), 100),
+            new Wind(Statics.genRNum(1,25), 100),
+            new Fire(Statics.genRNum(1,25), 100),
+            new Nature(Statics.genRNum(1,25), 100)
         );
 
         // If there is no pokemon

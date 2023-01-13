@@ -20,13 +20,13 @@ public class World implements Serializable {
 
     public static int pokeCount() {
         int sum = 0;
-        sum += Geo.types.length;
-        sum += Hydro.types.length;
-        sum += Pyro.types.length;
-        sum += Electro.types.length;
-        sum += Cryo.types.length;
-        sum += Anemo.types.length;
-        sum += Dendro.types.length;
+        sum += Earth.types.length;
+        sum += Water.types.length;
+        sum += Fire.types.length;
+        sum += Electric.types.length;
+        sum += Ice.types.length;
+        sum += Wind.types.length;
+        sum += Nature.types.length;
         return sum;
     }
 

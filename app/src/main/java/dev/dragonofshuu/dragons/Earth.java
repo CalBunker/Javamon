@@ -1,7 +1,7 @@
 package dev.dragonofshuu.dragons;
 import dev.dragonofshuu.utils.Statics;
 
-public class Geo extends Dragon {
+public class Earth extends Dragon {
     private static final long serialVersionUID = 32L;
 
     public static String[] types = {
@@ -12,10 +12,11 @@ public class Geo extends Dragon {
         "Gligar"
     };
 
-    public Geo(int environmentLevel) {
+    public Earth(int environmentLevel, float startingHealth) {
         super(
             Statics.pickRItem(types), 
-            environmentLevel
+            environmentLevel,
+            startingHealth
         );
     }
 }

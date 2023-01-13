@@ -17,10 +17,10 @@ public class Forest extends Tile {
         Screen.awaitUser(scan);
 
         Dragon pokemon = genPokemon( 10,
-            new Hydro(Statics.genRNum(21,45)),
-            new Anemo(Statics.genRNum(21,45)),
-            new Geo(Statics.genRNum(21,45)),
-            new Dendro(Statics.genRNum(21,45))
+            new Water(Statics.genRNum(21,45), 100),
+            new Wind(Statics.genRNum(21,45), 100),
+            new Earth(Statics.genRNum(21,45), 100),
+            new Nature(Statics.genRNum(21,45), 100)
         );
         
         if (pokemon == null) { Screen.typed("You found nothing. :("); return; }

@@ -224,12 +224,12 @@ public class EditUI {
         returnItem = eItem;
 
         switch (action) {
-            case ADD:    return add(eItem);
-            case DELETE: return delete(chosen, eItem);
-            case RENAME: return rename(scan, eItem);
-            case USE:    return use(player, eItem);
+            case ADD:      return add(eItem);
+            case DELETE:   return delete(chosen, eItem);
+            case RENAME:   return rename(scan, eItem);
+            case USE:      return use(player, eItem);
             case FAVORITE: return favorite(eItem);
-            case BACK:   return ResolveType.BREAK;
+            case BACK:     return ResolveType.BREAK;
         }
 
         return ResolveType.CONTINUE;

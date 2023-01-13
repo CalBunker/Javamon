@@ -18,8 +18,8 @@ public class Mistlands extends Tile {
         Screen.awaitUser(scan);
 
         Dragon pokemon = genPokemon( 10,
-            new Hydro(Statics.genRNum(76,99)),
-            new Pyro(Statics.genRNum(76, 99))
+            new Water(Statics.genRNum(76,99), 100),
+            new Fire(Statics.genRNum(76, 99), 100)
         );
         
         if (pokemon == null) { Screen.typed("You found nothing. :("); return; }

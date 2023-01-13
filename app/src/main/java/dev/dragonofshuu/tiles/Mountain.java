@@ -17,10 +17,10 @@ public class Mountain extends Tile {
         Screen.awaitUser(scan);
 
         Dragon pokemon = genPokemon( 10,
-            new Cryo(Statics.genRNum(41,65)),
-            new Geo(Statics.genRNum(41,65)),
-            new Anemo(Statics.genRNum(41, 65)),
-            new Hydro(Statics.genRNum(41,65))
+            new Ice(Statics.genRNum(41,65), 100),
+            new Earth(Statics.genRNum(41,65), 100),
+            new Wind(Statics.genRNum(41, 65), 100),
+            new Water(Statics.genRNum(41,65), 100)
         );
         
         if (pokemon == null) { Screen.typed("You found nothing. :("); return; }

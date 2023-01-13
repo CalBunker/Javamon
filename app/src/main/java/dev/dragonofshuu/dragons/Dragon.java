@@ -5,9 +5,10 @@ import java.util.Scanner;
 
 import dev.dragonofshuu.player.Player;
 import dev.dragonofshuu.player.backpack.BackpackItem;
+import dev.dragonofshuu.primary.Entity;
 import dev.dragonofshuu.utils.user.Question;
 
-public class Dragon implements Serializable, BackpackItem {
+public class Dragon extends Entity implements Serializable, BackpackItem {
     private static final long serialVersionUID = 32L;
     
     // dragon Name
@@ -27,7 +28,8 @@ public class Dragon implements Serializable, BackpackItem {
      * @param name The name of the dragon
      * @param level The level of the dragon
      */
-    public Dragon(String name, int level) {
+    public Dragon(String name, int level, float startingHealth) {
+        super(startingHealth);
         this.name = name;
         this.level = level;
     }

@@ -1,21 +1,22 @@
 package dev.dragonofshuu.dragons;
 import dev.dragonofshuu.utils.Statics;
 
-public class Pyro extends Dragon{
+public class Ice extends Dragon {
     private static final long serialVersionUID = 32L;
 
     public static String[] types = {
-        "Charmander",
-        "Vulpix",
-        "Growlithe",
-        "Ponyta",
-        "Flareon"
+        "Abra",
+        "Drowzee",
+        "Mr. Mime",
+        "Natu",
+        "Espeon"
     };
 
-    public Pyro(int environmentLevel) {
+    public Ice(int environmentLevel, float startingHealth) {
         super(
             Statics.pickRItem(types), 
-            environmentLevel
+            environmentLevel,
+            startingHealth
         );
     }
 }

@@ -9,6 +9,9 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+
+    id 'java'
+    id 'edu.sc.seis.launch4j' version '2.5.4'
 }
 
 run {
@@ -34,6 +37,17 @@ application {
     mainClass = 'dev.dragonofshuu.App'
 
     applicationDefaultJvmArgs = ["-Dconsole.encoding=Cp1252", "-Dfile.encoding=Cp1252"]
+}
+
+launch4j {
+    mainClassName = 'dev.dragonofshuu.App'
+    icon = "${projectDir}/src/main/resources/icon.ico"
+
+    bundledJrePath = 'jre'
+    bundledJre64Bit = true
+    jreMinVersion = '17'
+
+    headerType = "console"
 }
 
 tasks.named('test') {

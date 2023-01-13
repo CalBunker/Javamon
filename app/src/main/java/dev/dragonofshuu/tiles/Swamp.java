@@ -17,9 +17,9 @@ public class Swamp extends Tile {
         Screen.awaitUser(scan);
 
         Dragon pokemon = genPokemon( 10,
-            new Hydro(Statics.genRNum(61,85)),
-            new Dendro(Statics.genRNum(61,85)),
-            new Electro(Statics.genRNum(41,65))
+            new Water(Statics.genRNum(61,85), 100),
+            new Nature(Statics.genRNum(61,85), 100),
+            new Electric(Statics.genRNum(41,65), 100)
         );
         
         if (pokemon == null) { Screen.typed("You found nothing. :("); return; }

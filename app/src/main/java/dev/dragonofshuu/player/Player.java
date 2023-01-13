@@ -27,7 +27,7 @@ public class Player implements Serializable {
         this.name = name;
         xPos = x;
         yPos = y;
-        Dragon starter = new Dragon("Shuckle", 15);
+        Dragon starter = new Dragon("Shuckle", 15, 100);
         dragons.add(starter);
         activeDragon = starter;
     }

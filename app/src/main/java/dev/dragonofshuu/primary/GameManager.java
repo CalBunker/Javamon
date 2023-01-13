@@ -299,7 +299,7 @@ public class GameManager {
         System.out.println(" \\|________|\\|__|\\|__|\\|__|/       \\|__|\\|__|\\|__|     \\|__|\\|_______|\\|__| \\|__|");
         Thread.sleep(400);
         System.out.println("                         Press Enter to Continue...");
-        System.out.println(System.getProperty("file.encoding"));
+        // System.out.println(System.getProperty("file.encoding"));
         scan.nextLine();
         Screen.clear();
     }
