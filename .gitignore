@@ -1,6 +1,15 @@
-/bin/*
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+
+app/bin/*
 /data/
+app/data/
 .DS_Store
+
+/target/
 
 *.jar
 *.zip
