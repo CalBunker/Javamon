@@ -16,16 +16,16 @@ public class Mountain extends Tile {
         Screen.typed("You entered the mountain...");
         Screen.awaitUser(scan);
 
-        Dragon pokemon = genPokemon( 10,
+        Dragon dragon = genDragon( 10,
             new Ice(Statics.genRNum(41,65), 100),
             new Earth(Statics.genRNum(41,65), 100),
             new Wind(Statics.genRNum(41, 65), 100),
             new Water(Statics.genRNum(41,65), 100)
         );
         
-        if (pokemon == null) { Screen.typed("You found nothing. :("); return; }
+        if (dragon == null) { Screen.typed("You found nothing. :("); return; }
 
-        new DragonEncounter().handleEvent(pokemon, player, scan);
+        new DragonEncounter().handleEvent(dragon, player, scan);
     }
 
     @Override

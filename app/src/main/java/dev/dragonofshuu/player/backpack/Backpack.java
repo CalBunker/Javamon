@@ -25,7 +25,10 @@ public class Backpack extends ArrayList<BackpackItem> {
     }
 
     public void openBackpack(Scanner scan, Player player) {
-        // EditUI edit = new EditUI(super);
+        // EditUI edit = new EditUI(this);
         // edit.initialize(scan, "", super.get(0), player);
+        this.getDragons().forEach((dragon) -> {
+            System.out.println(dragon);
+        });
     }
 }

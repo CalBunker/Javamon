@@ -13,8 +13,8 @@ public abstract class Event {
 
     /**
      * Handle the event
-     * @param pokemon The current
-     * Pokemon being used.
+     * @param dragon The current
+     * Dragon being used.
      * @param player The player
      * involved.
      * @param scans The current Scanner
@@ -22,5 +22,5 @@ public abstract class Event {
      * @return How the event was
      * resolved.
      */
-    public abstract ResolveType handleEvent(Dragon pokemon, Player player, Scanner scans);
+    public abstract ResolveType handleEvent(Dragon dragon, Player player, Scanner scans);
 }

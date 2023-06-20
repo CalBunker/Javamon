@@ -15,17 +15,17 @@ public class Grassland extends Tile {
         Screen.typed("You entered the grassland...");
         Screen.awaitUser(scan);
         
-        Dragon pokemon = genPokemon(10,
+        Dragon dragon = genDragon(10,
             new Water(Statics.genRNum(1,25), 100),
             new Wind(Statics.genRNum(1,25), 100),
             new Fire(Statics.genRNum(1,25), 100),
             new Nature(Statics.genRNum(1,25), 100)
         );
 
-        // If there is no pokemon
-        if (pokemon == null) { Screen.typed("You found nothing. :("); return; }
+        // If there is no dragon
+        if (dragon == null) { Screen.typed("You found nothing. :("); return; }
 
-        new DragonEncounter().handleEvent(pokemon, player, scan);
+        new DragonEncounter().handleEvent(dragon, player, scan);
     }
 
     @Override

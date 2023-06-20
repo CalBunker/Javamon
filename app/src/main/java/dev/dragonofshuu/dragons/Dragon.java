@@ -1,6 +1,5 @@
 package dev.dragonofshuu.dragons;
 
-import java.io.Serializable;
 import java.util.Scanner;
 
 import dev.dragonofshuu.player.Player;
@@ -8,8 +7,8 @@ import dev.dragonofshuu.player.backpack.BackpackItem;
 import dev.dragonofshuu.primary.Entity;
 import dev.dragonofshuu.utils.user.Question;
 
-public class Dragon extends Entity implements Serializable, BackpackItem {
-    private static final long serialVersionUID = 32L;
+public class Dragon extends Entity implements BackpackItem {
+    // private static final long serialVersionUID = 32L;
     
     // dragon Name
     private String name;

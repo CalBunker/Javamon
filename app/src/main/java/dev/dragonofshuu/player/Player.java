@@ -11,13 +11,13 @@ public class Player implements Serializable {
 
     // Player Name
     private String name;
-    // Pokemon Storage
+    // Dragon Storage
     private Backpack dragons = new Backpack();
     // X location
     private int xPos;
     // Y location
     private int yPos;
-    // Player's active Pokemon
+    // Player's active Dragon
     private Dragon activeDragon = null;
     // Player XP
     private int xp = 0;
@@ -37,7 +37,7 @@ public class Player implements Serializable {
         return name;
     }
 
-    // Get Pokemon Storage
+    // Get Dragon Storage
     public Backpack getBackpack() {
         return dragons;
     }
@@ -70,13 +70,13 @@ public class Player implements Serializable {
         return yPos;
     }
 
-    // Get Player's active Pokemon
+    // Get Player's active Dragon
     public Dragon getActiveDragon() {
         return activeDragon;
     }
 
-    // Add Pokemon to Storage
-    public void addPokemon(Dragon dragon) {
+    // Add Dragon to Storage
+    public void addDragon(Dragon dragon) {
         dragons.add(dragon);
         if (activeDragon == null) {
             activeDragon = dragon;
@@ -86,8 +86,8 @@ public class Player implements Serializable {
         }
     }
 
-    // Remove Pokemon from Storage
-    public void removePokemon(Dragon dragon) {
+    // Remove Dragon from Storage
+    public void removeDragon(Dragon dragon) {
         dragons.remove(dragon);
     }
 
@@ -117,12 +117,12 @@ public class Player implements Serializable {
         this.yPos = yPos;
     }
 
-    // Set Player's active Pokemon
-    public void setActivePokemon(Dragon newActive) {
+    // Set Player's active Dragon
+    public void setActiveDragon(Dragon newActive) {
         activeDragon = newActive;
     }
 
-    // Print out the Pokemon in the player's bag
+    // Print out the Dragon in the player's bag
     public void printBag() {
         for (int i = 0; i < dragons.size(); i++) {
             Screen.typed(dragons.get(i).toString());

@@ -38,13 +38,13 @@ public abstract class Tile implements Serializable {
 
     /**
      * 
-     * @param outOfChance The chance a pokemon will spawn;
+     * @param outOfChance The chance a dragon will spawn;
      * the higher the number, the higher the chance
-     * @param dragonsToSpawn The pokemon that should attempt
+     * @param dragonsToSpawn The dragon that should attempt
      * to be spawned
-     * @return A possible pokemon
+     * @return A possible dragon
      */
-    public Dragon genPokemon(int outOfChance, Dragon... dragonsToSpawn) {
+    public Dragon genDragon(int outOfChance, Dragon... dragonsToSpawn) {
         int pokeR = Statics.genRNum(0, outOfChance);
         
         if (pokeR == 0) return null;
@@ -53,13 +53,13 @@ public abstract class Tile implements Serializable {
     }
 
     /**
-     * (Defaults to 1 in 2 chance of a pokemon spawning)
-     * @param dragonsToSpawn The pokemon that should attempt
+     * (Defaults to 1 in 2 chance of a dragon spawning)
+     * @param dragonsToSpawn The dragon that should attempt
      * to be spawned.
-     * @return A possbible pokemon
+     * @return A possbible dragon
      */
-    public Dragon genPokemon(Dragon... dragonsToSpawn) {
-        return genPokemon(2, dragonsToSpawn);
+    public Dragon genDragon(Dragon... dragonsToSpawn) {
+        return genDragon(2, dragonsToSpawn);
     }
 
     /**

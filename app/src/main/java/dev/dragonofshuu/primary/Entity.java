@@ -1,8 +1,12 @@
 package dev.dragonofshuu.primary;
 
+import java.io.Serializable;
+
 import dev.dragonofshuu.elements.Element;
 
-public class Entity {
+public class Entity implements Serializable {
+    private static final long serialVersionUID = 32L;
+    
     protected float health;
     protected Element element;
 

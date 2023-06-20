@@ -17,14 +17,14 @@ public class Mistlands extends Tile {
         Screen.typed("You entered the mistlands...");
         Screen.awaitUser(scan);
 
-        Dragon pokemon = genPokemon( 10,
+        Dragon dragon = genDragon( 10,
             new Water(Statics.genRNum(76,99), 100),
             new Fire(Statics.genRNum(76, 99), 100)
         );
         
-        if (pokemon == null) { Screen.typed("You found nothing. :("); return; }
+        if (dragon == null) { Screen.typed("You found nothing. :("); return; }
 
-        new DragonEncounter().handleEvent(pokemon, player, scan);
+        new DragonEncounter().handleEvent(dragon, player, scan);
     }
 
     @Override

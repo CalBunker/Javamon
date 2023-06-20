@@ -68,7 +68,7 @@ public class DragonEncounter extends Event {
 
         if (win) {
             Screen.typed("You caught the dragon!");
-            player.addPokemon(dragon);
+            player.addDragon(dragon);
             player.addXP(1);
         } else {
             Screen.typed("You failed to catch the dragon :(");
@@ -80,19 +80,19 @@ public class DragonEncounter extends Event {
 
         if (win) {
             Screen.typed("You won the battle!");
-            boolean action2 = Question.requestBoolean(scan, "Would you like to catch the wild Pokemon? (y/n)");
+            boolean action2 = Question.requestBoolean(scan, "Would you like to catch the wild Dragon? (y/n)");
 
             if (action2) {
                 Screen.typed("You caught the dragon!");
-                player.addPokemon(dragon);
+                player.addDragon(dragon);
                 player.addXP(1);
             } else {
                 Screen.typed("You left the poor thing to die. :(");
             }
 
         } else {
-            Screen.typed("You lost the battle, and your Pokemon died!");
-            player.removePokemon(dragon);
+            Screen.typed("You lost the battle, and your Dragon died!");
+            player.removeDragon(dragon);
         }
     }
 }
