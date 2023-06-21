@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import dev.dragonofshuu.dragons.Dragon;
 import dev.dragonofshuu.player.Player;
 // import dev.dragonofshuu.utils.user.editables.EditUI;
+import dev.dragonofshuu.utils.user.Screen;
 
 public class Backpack extends ArrayList<BackpackItem> {
     ArrayList<BackpackItem> x;
@@ -28,7 +29,7 @@ public class Backpack extends ArrayList<BackpackItem> {
         // EditUI edit = new EditUI(this);
         // edit.initialize(scan, "", super.get(0), player);
         this.getDragons().forEach((dragon) -> {
-            System.out.println(dragon);
+            Screen.typed(dragon.toString());
         });
     }
 }

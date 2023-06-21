@@ -32,11 +32,7 @@ public class DragonEncounter extends Event {
             catchChance = 1;
         }
         
-        if (catchChance == 1) {
-            return true;
-        } else {
-            return false;
-        }
+        return catchChance == 1;
     }
 
     @Override

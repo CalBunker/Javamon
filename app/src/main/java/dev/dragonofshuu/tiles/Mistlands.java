@@ -17,7 +17,7 @@ public class Mistlands extends Tile {
         Screen.typed("You entered the mistlands...");
         Screen.awaitUser(scan);
 
-        Dragon dragon = genDragon( 10,
+        Dragon dragon = genDragon( 4,
             new Water(Statics.genRNum(76,99), 100),
             new Fire(Statics.genRNum(76, 99), 100)
         );
