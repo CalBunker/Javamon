@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 import dev.dragonofshuu.player.Player;
-import dev.dragonofshuu.primary.World;
+import dev.dragonofshuu.primary.Game;
 import dev.dragonofshuu.utils.user.Question;
 import dev.dragonofshuu.utils.user.editables.EditUI;
 import dev.dragonofshuu.utils.user.editables.EditableItem;
@@ -26,18 +26,19 @@ public class Save implements Serializable, EditableItem {
 
     private String fileName;
     private long id;
-    World world;
+    // World world;
+    Game game;
 
     public Date date_made;
     public String name;
 
     private boolean favorite;
 
-    public Save(World world) {
+    public Save(Game game) {
         counter++;
 
         date_made = new Date();
-        this.world = world;
+        this.game = game;
 
         id = (System.currentTimeMillis() / 2l) + counter;
         fileName = FOLDER_LOCATION + "/" + id + ".dat";
@@ -109,12 +110,12 @@ public class Save implements Serializable, EditableItem {
         }
     }
 
-    public World getWorld() {
-        return world;
+    public Game getGame() {
+        return this.game;
     }
 
-    public void setWorld(World world) {
-        this.world = world;
+    public void setWorld(Game game) {
+        this.game = game;
     }
 
     public Save updateDate() {

@@ -2,10 +2,19 @@ package dev.dragonofshuu.primary;
 import dev.dragonofshuu.player.Player;
 import dev.dragonofshuu.utils.user.Question;
 import dev.dragonofshuu.utils.user.Screen;
+
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class GameManager {
+public class Game implements Serializable {
+    private static final long serialVersionUID = 32L;
     public static final boolean PLAY_INTRO = true;
+    
+    private World world;
+
+    public Game(World world) {
+        this.world = world;
+    }
 
     /**
      * The main world setup.
@@ -14,7 +23,7 @@ public class GameManager {
      * for a new game should play.
      * @return The newly created world.
      */
-    public static World setup(Scanner scan, boolean playIntro) {
+    public static Game setup(Scanner scan, boolean playIntro) {
         String playerName;
 
         // INTRODUCTION
@@ -41,23 +50,20 @@ public class GameManager {
         World world = new World(size, size, new Player(playerName, size/2, size/2));
         world.generate();
 
-        // Screen.clear();
-        // world.visualize();
-        // System.out.println();
-        // world.worldBreakdown();
-        // Screen.awaitUser(scan);
-        return world;
+        Game game = new Game(world);
+
+        return game;
     }
 
     /**
      * The main program loop
      * @param scan The Scanner object
-     * @param world The main world
+     * @param game The main world
      * @return True if the loop should continue
      */
-    public static boolean mainLoop(Scanner scan, World world) {
+    public boolean mainLoop(Scanner scan) {
         Screen.clear();
-        printStatistics(world);
+        printStatistics(this.world);
 
         int action = Question.chooseItem(scan, "What action do you want to take?", 
             "Move North",
@@ -67,10 +73,11 @@ public class GameManager {
             "-",
             "Open Backpack",
             "Open Map",
+            "Open Settings",
             "Close Game");
         
         try {
-            return determineDirection(action, world, scan);
+            return determineDirection(action, scan);
         } catch (IndexOutOfBoundsException e) {
             Screen.typed("You peer over a sudden cliff down towards an infinite void. Your brain cannot comprehend it's sheer vastness.");
             Screen.typed("You suddenly awake, about three feet away from the cliff. You do not know how much time has passed since you peered over it's edge, but you get the feeling you should do it again.");
@@ -81,7 +88,7 @@ public class GameManager {
     /**
      * @return True if the loop should continue
      */
-    private static boolean determineDirection(int action, World world, Scanner scan) {
+    private boolean determineDirection(int action, Scanner scan) {
         switch (action) {
             // THE BOTTOM RIGHT IS 0, 0
             case 0: // North
@@ -112,7 +119,10 @@ public class GameManager {
                 openMap(world);
                 break;
 
-            case 7: // Exit
+            case 7:
+                break;
+
+            case 8: // Exit
                 return false;
             default:
                 break;
@@ -136,7 +146,7 @@ public class GameManager {
      * @param world The current world
      * being played in.
      */
-    private static void printStatistics(World world) {
+    private void printStatistics(World world) {
         Player player = world.player;
 
         System.out.println("Player Coords - (" + player.getXPos() + ", " + player.getYPos() + ")");
@@ -219,8 +229,12 @@ public class GameManager {
      * @param world The current
      * world being played in.
      */
-    private static void renderMiniMap(World world) {
+    private void renderMiniMap(World world) {
         renderMiniMap(world, world.player, 1, false);
+    }
+
+    public World getWorld() {
+        return world;
     }
 
     /**

@@ -3,8 +3,7 @@ package dev.dragonofshuu;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import dev.dragonofshuu.primary.GameManager;
-import dev.dragonofshuu.primary.World;
+import dev.dragonofshuu.primary.Game;
 import dev.dragonofshuu.utils.save.Save;
 import dev.dragonofshuu.utils.user.Question;
 import dev.dragonofshuu.utils.user.Screen;
@@ -31,7 +30,7 @@ public class App {
 
         } catch (FileNotFoundException e) {
             // If failure, start the game like it has never been played
-            return new Save(GameManager.setup(scan, true));
+            return new Save(Game.setup(scan, true));
         }
 
         Save save;
@@ -56,22 +55,22 @@ public class App {
         // ask to play the intro, and then run the
         // setup.
         boolean playIntro = Question.requestBoolean(scan, "Run the intro?");
-        return new Save(GameManager.setup(scan, playIntro));
+        return new Save(Game.setup(scan, playIntro));
     }
 
     public static void main(String[] args) throws Exception {
         Scanner scan = new Scanner(System.in);
         Screen.clear();
 
-        GameManager.runLogo(scan);
+        Game.runLogo(scan);
 
         Save mainSave = determineSave(scan);
-        World world = mainSave.getWorld();
+        Game game = mainSave.getGame();
         
         boolean bContinue = true;
         while (bContinue) {
 
-            bContinue = GameManager.mainLoop(scan, world);
+            bContinue = game.mainLoop(scan);
             
             mainSave.saveGame();
 
